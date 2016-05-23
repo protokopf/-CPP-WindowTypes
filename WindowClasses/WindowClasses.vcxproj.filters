@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\WindowTypesH">
+      <UniqueIdentifier>{8de47728-da19-44d2-ab2b-e828b03ed261}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\WindowTypesCPP">
+      <UniqueIdentifier>{b0ca1357-9b94-46d5-8e74-21dd7363b175}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\WindowHandlersH">
+      <UniqueIdentifier>{4b7052df-bd50-46ce-b79e-bc1673d8e53f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\WindowHandlersCPP">
+      <UniqueIdentifier>{a851f028-7312-4808-b218-76196c29e1c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ExtraTypesH">
+      <UniqueIdentifier>{5c57a06f-a202-452e-afef-22b70c844c48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ExtraTypesCPP">
+      <UniqueIdentifier>{99141825-0d33-4e4c-927f-ae1161a11909}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicWindow.cpp">
+      <Filter>Source Files\WindowTypesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="IDrawableAlgorithms.cpp">
+      <Filter>Source Files\ExtraTypesCPP</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BasicWindow.h">
+      <Filter>Header Files\WindowTypesH</Filter>
+    </ClInclude>
+    <ClInclude Include="IObserver.h">
+      <Filter>Header Files\ExtraTypesH</Filter>
+    </ClInclude>
+    <ClInclude Include="IDrawableAlgorithms.h">
+      <Filter>Header Files\ExtraTypesH</Filter>
+    </ClInclude>
+    <ClInclude Include="Enums.h">
+      <Filter>Header Files\ExtraTypesH</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
