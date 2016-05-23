@@ -81,12 +81,14 @@
     <ClCompile Include="BasicWindow.cpp" />
     <ClCompile Include="IDrawableAlgorithms.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ViewLayer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasicWindow.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="IDrawableAlgorithms.h" />
     <ClInclude Include="IObserver.h" />
+    <ClInclude Include="ViewLayer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
