@@ -3,6 +3,8 @@
 
 namespace myconsolewindows
 {
+
+
 	void ViewLayer::SetUpConsole()
 	{
 		mConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -10,24 +12,15 @@ namespace myconsolewindows
 		cci.dwSize = 100;
 		cci.bVisible = false;
 		SetConsoleCursorInfo(mConsoleHandle, &cci);
-
-		
-		
 	}
-	void ViewLayer::InitialDraw()
-	{
-
-	}
-
 	void ViewLayer::MainLoop()
 	{
-		InitialDraw();
+		mDrawHandler->InitDraw();
 		while (true)
 		{
-			if (_kbhit())
+			if (mInputHandler->Check())
 			{
-				char key = 0;
-				cin >> key;
+				
 			}
 		}
 	}

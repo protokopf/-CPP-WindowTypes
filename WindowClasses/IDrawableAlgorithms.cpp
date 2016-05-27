@@ -4,9 +4,9 @@
 
 namespace myconsolewindows
 {
-#pragma region IDrawAlgorithm
+#pragma region ViewAlgorithm
 
-	void IDrawAlgorithm::ExtractValuesFromWindow(BasicWindow *window)
+	void ViewAlgorithm::ExtractValuesFromWindow(BasicWindow *window)
 	{
 		winPos = window->GetPosition();
 		winSize = window->GetSize();
@@ -19,18 +19,13 @@ namespace myconsolewindows
 #pragma endregion
 
 #pragma region BorderDrawAlgoruthm
-	BorderDrawAlgorithm::~BorderDrawAlgorithm()
-	{
-		
-	}
-
 	void BorderDrawAlgorithm::Draw(BasicWindow *wind)
 	{
 		ExtractValuesFromWindow(wind);
 		LPDWORD length = new DWORD;
 
 		FillConsoleOutputAttribute(handle, color, winSize.X - 1, { winPos.X + 1, winPos.Y }, length);
-		FillConsoleOutputAttribute(handle, color, winSize.X - 1, { winPos.X + 1, winPos.Y }, length);
+		FillConsoleOutputAttribute(handle, color, winSize.X - 1, { winPos.X + 1, maxY }, length);
 
 		FillConsoleOutputCharacterW(handle, BORDER::UpBorder, winSize.X - 1, { winPos.X + 1, winPos.Y }, length);
 		FillConsoleOutputCharacterW(handle, BORDER::DownBorder, winSize.X - 1, { winPos.X + 1, maxY }, length);
@@ -72,4 +67,30 @@ namespace myconsolewindows
 	}
 
 #pragma endregion 
+
+#pragma region BorderCleanAlgorithm
+
+	void BorderCleanAlgorithm::Clean(BasicWindow *window)
+	{
+		ExtractValuesFromWindow(window);
+		LPDWORD length = new DWORD;
+
+		FillConsoleOutputAttribute(handle, color, winSize.X, { winPos.X, winPos.Y }, length);
+		FillConsoleOutputAttribute(handle, color, winSize.X, { winPos.X + 1, winPos.Y }, length);
+
+		FillConsoleOutputCharacterW(handle, BORDER::Space, winSize.X, { winPos.X, winPos.Y }, length);
+		FillConsoleOutputCharacterW(handle, BORDER::Space, winSize.X, { winPos.X , maxY }, length);
+
+		for (int y = winPos.Y; y < maxY; ++y)
+		{
+			FillConsoleOutputAttribute(handle, color, winSize.X, { winPos.X, y }, length);
+			FillConsoleOutputAttribute(handle, color, winSize.X, { maxX, y }, length);
+
+			FillConsoleOutputCharacterW(handle, BORDER::Space, winSize.X, { winPos.X, y }, length);
+			FillConsoleOutputCharacterW(handle, BORDER::Space, winSize.X, { maxX, y }, length);
+		}
+		delete length;
+	}
+
+#pragma endregion
 }

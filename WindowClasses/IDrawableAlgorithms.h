@@ -1,6 +1,7 @@
 #ifndef IDRAW_ALG
 #define IDRAW_ALG
 
+#include <Windows.h>
 #include <iostream>
 #include <vector>
 
@@ -9,7 +10,7 @@ namespace myconsolewindows
 {
 	extern class BasicWindow;
 
-	class IDrawAlgorithm
+	class ViewAlgorithm
 	{
 	protected:
 		COORD winPos;
@@ -18,11 +19,22 @@ namespace myconsolewindows
 		int maxX;
 		HANDLE handle;
 		WORD   color;
-		
 		void ExtractValuesFromWindow(BasicWindow *window);
+	};
+
+	class IDrawAlgorithm : public ViewAlgorithm
+	{
 	public:
 		virtual void Draw(BasicWindow *window) = 0;
 		virtual ~IDrawAlgorithm(){}
+	};
+	class BorderDrawAlgorithm : IDrawAlgorithm
+	{
+	private:
+	public:
+		void Draw(BasicWindow *window) override;
+
+		~BorderDrawAlgorithm();
 	};
 
 	class ADrawDecorator : public IDrawAlgorithm
@@ -39,7 +51,6 @@ namespace myconsolewindows
 			component->Draw(window);
 		}
 	};
-
 	class FillSquareDrawDecorator : ADrawDecorator
 	{
 	private:
@@ -58,13 +69,16 @@ namespace myconsolewindows
 		}
 	};
 
-	class BorderDrawAlgorithm : IDrawAlgorithm
+	class ICleanAlgorithm : public ViewAlgorithm
 	{
-	private:
 	public:
-		void Draw(BasicWindow *window) override;
-
-		~BorderDrawAlgorithm();
+		virtual void Clean(BasicWindow *window) = 0;
+		virtual ~ICleanAlgorithm(){}
+	};
+	class BorderCleanAlgorithm : public ICleanAlgorithm
+	{
+	public:
+		void Clean(BasicWindow *window) override;
 	};
 }
 #endif

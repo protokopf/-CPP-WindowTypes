@@ -2,8 +2,9 @@
 #define BAS_WIN_H
 
 #include "IDrawableAlgorithms.h"
-#include <Windows.h>
+#include "IWinCommand.h"
 #include "Enums.h"
+#include <Windows.h>
 #include <list>
 #include <string>
 using namespace std;
@@ -24,6 +25,8 @@ namespace myconsolewindows
 		COORD mSize;
 
 		bool mIsChanged;
+		bool mIsClicked;
+
 		bool mIsInteractable;
 		bool mIsHidden;
 		bool mIsDeleted;
@@ -32,13 +35,17 @@ namespace myconsolewindows
 		BasicWindow* mParent;
 
 		wstring mName;
-		IDrawAlgorithm *mDrawAlgorithm;
 
+		IDrawAlgorithm *mDrawAlgorithm;
+		ICleanAlgorithm *mCleanAlgorithm;
+
+		WindowCommand* mInnerCommand = nullptr;
+		WindowCommand* mExtraCommand = nullptr;
 
 		void DeleteChilds();
 	public:
 		BasicWindow();
-		BasicWindow(wstring name, int x, int y, int w, int h, HANDLE &console);
+		BasicWindow(wstring name, int x, int y, int w, int h, HANDLE &console,WindowCommand* command = nullptr, IDrawAlgorithm *drAl = nullptr, ICleanAlgorithm *clAl = nullptr);
 
 		int GetCurrentChildIndex();
 		void SetCurrentChildIndex(int index);
@@ -49,17 +56,20 @@ namespace myconsolewindows
 		wstring GetName();
 		void   SetName(const wstring &name);
 
+		bool IsClicked() { return mIsClicked; }
+		void IsClicked(bool clicked) { mIsClicked = clicked; }
+
 		bool IsChanged() { return mIsChanged; }
-		bool SetChanged(bool value) { mIsChanged = value; }
+		void IsChanged(bool value) { mIsChanged = value; }
 
 		bool IsInteractable() { return mIsInteractable; }
-		bool SetInteractable(bool value) { mIsInteractable = value; }
+		void IsInteractable(bool value) { mIsInteractable = value; }
 
 		bool IsHidden() { return mIsHidden; }
-		bool SetHidden(bool value) { mIsHidden = value; }
+		void IsHidden(bool value) { mIsHidden = value; }
 
 		bool IsDeleted() { return mIsDeleted; }
-		bool SetDeleted(bool value) { mIsDeleted = value; }
+		void IsDeleted(bool value) { mIsDeleted = value; }
 
 		COORD GetPosition() { return mPosition; }
 		COORD GetSize() { return mSize; }
@@ -78,7 +88,19 @@ namespace myconsolewindows
 		COLORS GetBack() { return backColor; }
 		COLORS GetFont() { return fontColor; }
 
+		list<BasicWindow*>& GetChilds() { return mChilds; }
+
 		virtual void AddChildWindow(BasicWindow* child);
+
+		WindowCommand* GetInnerCommand();
+		void SetInnerCommand(WindowCommand* command);
+
+		WindowCommand* GetExtraCommand();
+		void SetExtraCommand(WindowCommand* command);
+
+		virtual void Draw();
+		virtual void Clean();
+
 		virtual ~BasicWindow();
 	};
 }

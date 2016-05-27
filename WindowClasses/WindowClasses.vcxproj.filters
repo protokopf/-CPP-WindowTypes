@@ -37,6 +37,12 @@
     <Filter Include="Source Files\ViewCPP\WindowTypesCPP">
       <UniqueIdentifier>{b0ca1357-9b94-46d5-8e74-21dd7363b175}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\View\WindowCommandsH">
+      <UniqueIdentifier>{7c9ed17e-5d46-44f9-914b-a901b5749ed4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ViewCPP\WindowCommandsCPP">
+      <UniqueIdentifier>{9143402c-81f9-48f4-9555-013555e55b2b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -50,6 +56,18 @@
     </ClCompile>
     <ClCompile Include="ViewLayer.cpp">
       <Filter>Source Files\ViewCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>Source Files\ViewCPP\WindowHandlersCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="IWinCommand.cpp">
+      <Filter>Source Files\ViewCPP\WindowCommandsCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawHandler.cpp">
+      <Filter>Source Files\ViewCPP\WindowHandlersCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowCreatorHandler.cpp">
+      <Filter>Source Files\ViewCPP\WindowHandlersCPP</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +85,18 @@
     </ClInclude>
     <ClInclude Include="ViewLayer.h">
       <Filter>Header Files\View</Filter>
+    </ClInclude>
+    <ClInclude Include="IWinCommand.h">
+      <Filter>Header Files\View\WindowCommandsH</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>Header Files\View\WindowHandlersH</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawHandler.h">
+      <Filter>Header Files\View\WindowHandlersH</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowCreatorHandler.h">
+      <Filter>Header Files\View\WindowHandlersH</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
