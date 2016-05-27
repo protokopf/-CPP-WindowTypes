@@ -6,9 +6,10 @@ namespace myconsolewindows
 	{
 	}
 	BasicWindow::BasicWindow(wstring name, int x, int y, int w, int h, HANDLE &console) : 
-		mName(name), mPosition{ x, y }, mSize{ w, h }, hConsole(console)
+		mName(name), hConsole(console)
 	{
-
+		mSize = { w, h };
+		mPosition = { x, y };
 	}
 
 	BasicWindow::~BasicWindow()

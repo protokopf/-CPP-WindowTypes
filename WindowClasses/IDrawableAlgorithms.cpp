@@ -4,42 +4,72 @@
 
 namespace myconsolewindows
 {
+#pragma region IDrawAlgorithm
 
-	//BorderDrawAlgorithm
-
-	// переписать алгоритм так, чтобы цикл проходился только по границе
-	void BorderDrawAlgorithm::Draw(BasicWindow *wind)
+	void IDrawAlgorithm::ExtractValuesFromWindow(BasicWindow *window)
 	{
-		COORD winPos = wind->GetPosition();
-		COORD winSize = wind->GetSize();
-		int maxY = winPos.Y + winSize.Y;
-		int maxX = winPos.X + winSize.X;
-		for (int i = winPos.Y; i < maxY; ++i)
-		{
-			for (int j = winPos.X; j < maxX; ++j)
-			{
-				char symbol;
-				SetConsoleCursorPosition(wind->GetConsoleHandle(), { j, i });
-				if (i == winPos.Y && j == winPos.X)
-					symbol = BORDER::LeftUpCorner;
-				else if (i == winPos.Y && j == maxX - 1)
-					symbol = BORDER::RightUpCorner;
-				else if (i == maxY - 1 && j == winPos.X)
-					symbol = BORDER::LeftDownCorner;
-				else if (i == maxY - 1 && j == maxX - 1)
-					symbol = BORDER::RightDownCorner;
-				else if ((i == winPos.Y || i == maxY - 1) && j > winPos.X)
-					symbol = BORDER::UpBorder;
-				else if (i > winPos.Y && (j == winPos.X || j == maxX - 1))
-					symbol = BORDER::LeftBorder;
-				else
-				{
-	
-					continue;
-				}
-				Console.Write(symbol);
-			}
-		}
+		winPos = window->GetPosition();
+		winSize = window->GetSize();
+		maxY = winPos.Y + winSize.Y;
+		maxX = winPos.X + winSize.X;
+		handle = window->GetConsoleHandle();
+		color = (WORD)((window->GetBack() << 4) | window->GetFont());
 	}
 
+#pragma endregion
+
+#pragma region BorderDrawAlgoruthm
+	BorderDrawAlgorithm::~BorderDrawAlgorithm()
+	{
+		
+	}
+
+	void BorderDrawAlgorithm::Draw(BasicWindow *wind)
+	{
+		ExtractValuesFromWindow(wind);
+		LPDWORD length = new DWORD;
+
+		FillConsoleOutputAttribute(handle, color, winSize.X - 1, { winPos.X + 1, winPos.Y }, length);
+		FillConsoleOutputAttribute(handle, color, winSize.X - 1, { winPos.X + 1, winPos.Y }, length);
+
+		FillConsoleOutputCharacterW(handle, BORDER::UpBorder, winSize.X - 1, { winPos.X + 1, winPos.Y }, length);
+		FillConsoleOutputCharacterW(handle, BORDER::DownBorder, winSize.X - 1, { winPos.X + 1, maxY }, length);
+
+		FillConsoleOutputAttribute(handle, color, 1, winPos, length);
+		FillConsoleOutputAttribute(handle, color, 1, { maxX, winPos.Y }, length);
+		FillConsoleOutputAttribute(handle, color, 1, { winPos.X, maxY }, length);
+		FillConsoleOutputAttribute(handle, color, 1, { maxX, maxY }, length);
+
+		FillConsoleOutputCharacterW(handle, BORDER::LeftUpCorner, 1, winPos, length);
+		FillConsoleOutputCharacterW(handle, BORDER::RightUpCorner, 1, { maxX, winPos.Y }, length);
+		FillConsoleOutputCharacterW(handle, BORDER::LeftDownCorner, 1, { winPos.X, maxY }, length);
+		FillConsoleOutputCharacterW(handle, BORDER::RightDownCorner, 1, { maxX, maxY }, length);
+
+		for (int y = winPos.Y + 1; y < maxY; ++y)
+		{
+			FillConsoleOutputAttribute(handle, color, 1, { winPos.X, y }, length);
+			FillConsoleOutputAttribute(handle, color, 1, { maxX, y }, length);
+
+			FillConsoleOutputCharacterW(handle, BORDER::LeftBorder, 1, { winPos.X, y }, length);
+			FillConsoleOutputCharacterW(handle, BORDER::RightBorder, 1, { maxX, y }, length);
+		}
+		delete length;
+	}
+#pragma endregion 
+
+#pragma region FillSquareDrawDecorator
+
+	void FillSquareDrawDecorator::FillWindowSquare(BasicWindow *wind)
+	{
+		ExtractValuesFromWindow(wind);
+		LPDWORD length = new DWORD;
+		for (int y = winPos.Y + 1; y < maxY; ++y)
+		{
+			FillConsoleOutputAttribute(handle, color, winSize.X - 2, { winPos.X + 1, y }, length);
+			FillConsoleOutputCharacterW(handle, mFilledSymbol, winSize.X - 2, { winPos.X + 1, y }, length);
+		}
+		delete length;
+	}
+
+#pragma endregion 
 }

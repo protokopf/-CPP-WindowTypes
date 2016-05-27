@@ -1,7 +1,8 @@
 #ifndef VIEW_LAYER_H
 #define VIEW_LAYER_H
-
 #include "BasicWindow.h"
+#include <conio.h>
+#include <iostream>
 
 
 namespace myconsolewindows
@@ -13,6 +14,7 @@ namespace myconsolewindows
 		HANDLE       mConsoleHandle;
 
 		void SetUpConsole();
+		void InitialDraw();
 	public:
 		ViewLayer();
 

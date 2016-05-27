@@ -1,6 +1,7 @@
 #ifndef BAS_WIN_H
 #define BAS_WIN_H
 
+#include "IDrawableAlgorithms.h"
 #include <Windows.h>
 #include "Enums.h"
 #include <list>
@@ -16,6 +17,9 @@ namespace myconsolewindows
 		int mCurrentChildIndex = 0;
 		HANDLE hConsole;
 
+		COLORS backColor;
+		COLORS fontColor;
+
 		COORD mPosition;
 		COORD mSize;
 
@@ -26,7 +30,10 @@ namespace myconsolewindows
 
 		list<BasicWindow*> mChilds;
 		BasicWindow* mParent;
+
 		wstring mName;
+		IDrawAlgorithm *mDrawAlgorithm;
+
 
 		void DeleteChilds();
 	public:
@@ -60,10 +67,16 @@ namespace myconsolewindows
 		HANDLE GetConsoleHandle() { return hConsole; }
 
 		void HideWindow(bool reallyShow);
-		void SetColor  (int font, int back)
+
+		void SetColor  (COLORS font, COLORS back)
 		{
 			SetConsoleTextAttribute(hConsole, (WORD)((back << 4) | font));
+			fontColor = font;
+			backColor = back;
 		}
+
+		COLORS GetBack() { return backColor; }
+		COLORS GetFont() { return fontColor; }
 
 		virtual void AddChildWindow(BasicWindow* child);
 		virtual ~BasicWindow();
