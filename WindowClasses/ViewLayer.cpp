@@ -3,7 +3,17 @@
 
 namespace myconsolewindows
 {
+	ViewLayer::ViewLayer()
+	{
+		mCreatorManager = new WindowCreatorManager();
+		SetUpCreator();
 
+
+		// создание окон
+		
+		mDrawManager = new WindowDrawManager();
+		mInputManager = new BasicKeyboardInputManager(mActiveWindow);
+	}
 
 	void ViewLayer::SetUpConsole()
 	{
@@ -13,12 +23,18 @@ namespace myconsolewindows
 		cci.bVisible = false;
 		SetConsoleCursorInfo(mConsoleHandle, &cci);
 	}
+	void ViewLayer::SetUpCreator()
+	{
+		mCreatorManager->RegisternWindow("PluralWindow", CreatePluralWindow);
+		// регистрация других окон по мере добавления новых окон
+	}
+
 	void ViewLayer::MainLoop()
 	{
-		mDrawHandler->InitDraw();
+		mDrawManager->InitDraw();
 		while (true)
 		{
-			if (mInputHandler->Check())
+			if (mInputManager->Check())
 			{
 				
 			}

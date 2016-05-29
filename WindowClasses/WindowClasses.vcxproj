@@ -79,24 +79,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BasicWindow.cpp" />
-    <ClCompile Include="DrawHandler.cpp" />
+    <ClCompile Include="DrawManager.cpp" />
     <ClCompile Include="IDrawableAlgorithms.cpp" />
-    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IWinCommand.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ViewLayer.cpp" />
-    <ClCompile Include="WindowCreatorHandler.cpp" />
+    <ClCompile Include="WindowCreationFunctions.cpp" />
+    <ClCompile Include="WindowCreatorManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasicWindow.h" />
-    <ClInclude Include="DrawHandler.h" />
+    <ClInclude Include="DrawManager.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="IDrawableAlgorithms.h" />
-    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="IObserver.h" />
     <ClInclude Include="IWinCommand.h" />
     <ClInclude Include="ViewLayer.h" />
-    <ClInclude Include="WindowCreatorHandler.h" />
+    <ClInclude Include="WindowCreationFunctions.h" />
+    <ClInclude Include="WindowCreatorManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

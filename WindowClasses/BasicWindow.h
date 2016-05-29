@@ -5,7 +5,7 @@
 #include "IWinCommand.h"
 #include "Enums.h"
 #include <Windows.h>
-#include <list>
+#include <vector>
 #include <string>
 using namespace std;
 
@@ -31,8 +31,8 @@ namespace myconsolewindows
 		bool mIsHidden;
 		bool mIsDeleted;
 
-		list<BasicWindow*> mChilds;
-		BasicWindow* mParent;
+		vector<BasicWindow*> mChilds;
+		BasicWindow* mParent = nullptr;
 
 		wstring mName;
 
@@ -40,12 +40,20 @@ namespace myconsolewindows
 		ICleanAlgorithm *mCleanAlgorithm;
 
 		WindowCommand* mInnerCommand = nullptr;
-		WindowCommand* mExtraCommand = nullptr;
+		vector<WindowCommand*> mExtraCommands;
 
 		void DeleteChilds();
 	public:
 		BasicWindow();
 		BasicWindow(wstring name, int x, int y, int w, int h, HANDLE &console,WindowCommand* command = nullptr, IDrawAlgorithm *drAl = nullptr, ICleanAlgorithm *clAl = nullptr);
+
+		void HideWindow(bool reallyShow);
+		void InFocus();
+		void OutFocus();
+
+		virtual void AddChildWindow(BasicWindow* child);
+		virtual void Draw();
+		virtual void Clean();
 
 		int GetCurrentChildIndex();
 		void SetCurrentChildIndex(int index);
@@ -69,15 +77,12 @@ namespace myconsolewindows
 		void IsHidden(bool value) { mIsHidden = value; }
 
 		bool IsDeleted() { return mIsDeleted; }
-		void IsDeleted(bool value) { mIsDeleted = value; }
+		void IsDeleted(bool value) { mIsDeleted = value; mIsChanged = value; }
 
 		COORD GetPosition() { return mPosition; }
 		COORD GetSize() { return mSize; }
 
 		HANDLE GetConsoleHandle() { return hConsole; }
-
-		void HideWindow(bool reallyShow);
-
 		void SetColor  (COLORS font, COLORS back)
 		{
 			SetConsoleTextAttribute(hConsole, (WORD)((back << 4) | font));
@@ -88,18 +93,13 @@ namespace myconsolewindows
 		COLORS GetBack() { return backColor; }
 		COLORS GetFont() { return fontColor; }
 
-		list<BasicWindow*>& GetChilds() { return mChilds; }
-
-		virtual void AddChildWindow(BasicWindow* child);
+		vector<BasicWindow*>& GetChilds() { return mChilds; }
 
 		WindowCommand* GetInnerCommand();
 		void SetInnerCommand(WindowCommand* command);
 
-		WindowCommand* GetExtraCommand();
+		vector<WindowCommand*>& GetExtraCommands();
 		void SetExtraCommand(WindowCommand* command);
-
-		virtual void Draw();
-		virtual void Clean();
 
 		virtual ~BasicWindow();
 	};

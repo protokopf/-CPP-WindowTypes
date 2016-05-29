@@ -2,6 +2,7 @@
 
 namespace myconsolewindows
 {
+#pragma region Конструкторы и деструкторы
 	BasicWindow::BasicWindow()
 	{
 	}
@@ -15,12 +16,9 @@ namespace myconsolewindows
 	BasicWindow::~BasicWindow()
 	{
 	}
+#pragma endregion
 
-	void	BasicWindow::DeleteChilds()
-	{
-		for (auto it = mChilds.begin(); it != mChilds.end(); ++it)
-			delete (*it);
-	}
+#pragma region Геттеры и Сеттеры
 
 	int		BasicWindow::GetCurrentChildIndex()
 	{
@@ -49,6 +47,28 @@ namespace myconsolewindows
 		mName = name;
 	}
 
+#pragma endregion
+
+#pragma region Методы Класса
+	WindowCommand* BasicWindow::GetInnerCommand()
+	{
+		return mInnerCommand;
+	}
+	void BasicWindow::SetInnerCommand(WindowCommand* command)
+	{
+		if (!mInnerCommand)
+			mInnerCommand = command;
+	}
+
+	void BasicWindow::SetExtraCommand(WindowCommand* command)
+	{
+		mExtraCommands.push_back(command);
+	}
+	vector<WindowCommand*>& BasicWindow::GetExtraCommands()
+	{
+		return mExtraCommands;
+	}
+
 	void BasicWindow::HideWindow(bool isHidden)
 	{
 		this->mIsHidden = isHidden;
@@ -60,6 +80,11 @@ namespace myconsolewindows
 	{
 		mChilds.push_back(child);
 		child->mParent = this;
+	}
+	void	BasicWindow::DeleteChilds()
+	{
+		for (auto it = mChilds.begin(); it != mChilds.end(); ++it)
+			delete (*it);
 	}
 
 	void BasicWindow::Draw()
@@ -73,26 +98,17 @@ namespace myconsolewindows
 			mCleanAlgorithm->Clean(this);
 	}
 
-	WindowCommand* BasicWindow::GetInnerCommand()
+	void BasicWindow::InFocus()
 	{
-		return mInnerCommand;
+		backColor = COLORS::Red;
+		IsChanged(true);
 	}
-	void BasicWindow::SetInnerCommand(WindowCommand* command)
+	void BasicWindow::OutFocus()
 	{
-		if (!mInnerCommand)
-			mInnerCommand = command;
+		backColor = COLORS::White;
+		IsChanged(true);
 	}
-
-	void BasicWindow::SetExtraCommand(WindowCommand* command)
-	{
-		if (mExtraCommand)
-			delete mExtraCommand;
-		mExtraCommand = command;
-	}
-	WindowCommand* BasicWindow::GetExtraCommand()
-	{
-		return mExtraCommand;
-	}
+#pragma endregion
 }
 
 

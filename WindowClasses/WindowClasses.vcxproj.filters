@@ -19,9 +19,6 @@
     <Filter Include="Header Files\View\ExtraTypesH">
       <UniqueIdentifier>{5c57a06f-a202-452e-afef-22b70c844c48}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\View\WindowHandlersH">
-      <UniqueIdentifier>{4b7052df-bd50-46ce-b79e-bc1673d8e53f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\View\WindowTypesH">
       <UniqueIdentifier>{8de47728-da19-44d2-ab2b-e828b03ed261}</UniqueIdentifier>
     </Filter>
@@ -31,9 +28,6 @@
     <Filter Include="Source Files\ViewCPP\ExtraTypesCPP">
       <UniqueIdentifier>{99141825-0d33-4e4c-927f-ae1161a11909}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\ViewCPP\WindowHandlersCPP">
-      <UniqueIdentifier>{a851f028-7312-4808-b218-76196c29e1c9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\ViewCPP\WindowTypesCPP">
       <UniqueIdentifier>{b0ca1357-9b94-46d5-8e74-21dd7363b175}</UniqueIdentifier>
     </Filter>
@@ -42,6 +36,18 @@
     </Filter>
     <Filter Include="Source Files\ViewCPP\WindowCommandsCPP">
       <UniqueIdentifier>{9143402c-81f9-48f4-9555-013555e55b2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\View\LayerClassesH">
+      <UniqueIdentifier>{14d1c00e-3717-4dc1-95a9-d54ed37d1b78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ViewCPP\LayerClassesCPP">
+      <UniqueIdentifier>{b9627fa7-dbb6-45d7-a733-15dd79aa576d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\View\WindowManagersH">
+      <UniqueIdentifier>{4b7052df-bd50-46ce-b79e-bc1673d8e53f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ViewCPP\WindowManagersCPP">
+      <UniqueIdentifier>{a851f028-7312-4808-b218-76196c29e1c9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -54,20 +60,23 @@
     <ClCompile Include="IDrawableAlgorithms.cpp">
       <Filter>Source Files\ViewCPP\ExtraTypesCPP</Filter>
     </ClCompile>
-    <ClCompile Include="ViewLayer.cpp">
-      <Filter>Source Files\ViewCPP</Filter>
-    </ClCompile>
-    <ClCompile Include="InputHandler.cpp">
-      <Filter>Source Files\ViewCPP\WindowHandlersCPP</Filter>
-    </ClCompile>
     <ClCompile Include="IWinCommand.cpp">
       <Filter>Source Files\ViewCPP\WindowCommandsCPP</Filter>
     </ClCompile>
-    <ClCompile Include="DrawHandler.cpp">
-      <Filter>Source Files\ViewCPP\WindowHandlersCPP</Filter>
+    <ClCompile Include="ViewLayer.cpp">
+      <Filter>Source Files\ViewCPP\LayerClassesCPP</Filter>
     </ClCompile>
-    <ClCompile Include="WindowCreatorHandler.cpp">
-      <Filter>Source Files\ViewCPP\WindowHandlersCPP</Filter>
+    <ClCompile Include="WindowCreationFunctions.cpp">
+      <Filter>Source Files\ViewCPP\LayerClassesCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawManager.cpp">
+      <Filter>Source Files\ViewCPP\WindowManagersCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\ViewCPP\WindowManagersCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowCreatorManager.cpp">
+      <Filter>Source Files\ViewCPP\WindowManagersCPP</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -83,20 +92,23 @@
     <ClInclude Include="Enums.h">
       <Filter>Header Files\View\ExtraTypesH</Filter>
     </ClInclude>
-    <ClInclude Include="ViewLayer.h">
-      <Filter>Header Files\View</Filter>
-    </ClInclude>
     <ClInclude Include="IWinCommand.h">
       <Filter>Header Files\View\WindowCommandsH</Filter>
     </ClInclude>
-    <ClInclude Include="InputHandler.h">
-      <Filter>Header Files\View\WindowHandlersH</Filter>
+    <ClInclude Include="ViewLayer.h">
+      <Filter>Header Files\View\LayerClassesH</Filter>
     </ClInclude>
-    <ClInclude Include="DrawHandler.h">
-      <Filter>Header Files\View\WindowHandlersH</Filter>
+    <ClInclude Include="WindowCreationFunctions.h">
+      <Filter>Header Files\View\LayerClassesH</Filter>
     </ClInclude>
-    <ClInclude Include="WindowCreatorHandler.h">
-      <Filter>Header Files\View\WindowHandlersH</Filter>
+    <ClInclude Include="DrawManager.h">
+      <Filter>Header Files\View\WindowManagersH</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Header Files\View\WindowManagersH</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowCreatorManager.h">
+      <Filter>Header Files\View\WindowManagersH</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
