@@ -1,29 +1,35 @@
-﻿Build started 27.05.2016 18:11:21.
+﻿Build started 29.05.2016 23:47:39.
      1>Project "E:\Программирование\С++\Библиотека окон\WinClasses\WindowClasses\WindowClasses.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ViewLayer.cpp main.cpp
-         main.cpp
-     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\idrawablealgorithms.h(11): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
-     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\iwincommand.h(6): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
-     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\inputhandler.h(5): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
-     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\drawhandler.h(9): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
+         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CommandManager.cpp ViewLayer.cpp main.cpp
          ViewLayer.cpp
      1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\idrawablealgorithms.h(11): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
      1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\iwincommand.h(6): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
-     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\inputhandler.h(5): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
-     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\drawhandler.h(9): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
+     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\inputmanager.h(5): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
+     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\drawmanager.h(9): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
+     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\windowcreatormanager.h(11): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
+     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\commandmanager.h(10): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
+     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\windowcreationfunctions.h(5): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
+     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\viewlayer.cpp(14): error C2512: 'myconsolewindows::CommandManager' : no appropriate default constructor available
+         CommandManager.cpp
+     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\commandmanager.h(10): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
+     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\idrawablealgorithms.h(11): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
+     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\iwincommand.h(6): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
+     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\commandmanager.cpp(35): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\commandmanager.cpp(40): warning C4018: '<' : signed/unsigned mismatch
          Generating Code...
-       Link:
-         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Программирование\С++\Библиотека окон\WinClasses\Debug\WindowClasses.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\Программирование\С++\Библиотека окон\WinClasses\Debug\WindowClasses.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Программирование\С++\Библиотека окон\WinClasses\Debug\WindowClasses.lib" /MACHINE:X86 Debug\BasicWindow.obj
-         Debug\DrawHandler.obj
-         Debug\IDrawableAlgorithms.obj
-         Debug\InputHandler.obj
-         Debug\IWinCommand.obj
-         Debug\main.obj
-         Debug\ViewLayer.obj
-         WindowClasses.vcxproj -> E:\Программирование\С++\Библиотека окон\WinClasses\Debug\WindowClasses.exe
-     1>Done Building Project "E:\Программирование\С++\Библиотека окон\WinClasses\WindowClasses\WindowClasses.vcxproj" (Build target(s)).
+         Compiling...
+         main.cpp
+     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\idrawablealgorithms.h(11): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
+     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\iwincommand.h(6): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
+     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\inputmanager.h(5): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
+     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\drawmanager.h(9): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
+     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\windowcreatormanager.h(11): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
+     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\commandmanager.h(10): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
+     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\windowcreationfunctions.h(5): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
+         Generating Code...
+     1>Done Building Project "E:\Программирование\С++\Библиотека окон\WinClasses\WindowClasses\WindowClasses.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:20.24
+Time Elapsed 00:00:17.35

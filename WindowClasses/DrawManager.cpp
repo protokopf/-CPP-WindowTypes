@@ -7,7 +7,7 @@ namespace myconsolewindows
 	void DrawManagerInterface::RecursiveAdding(BasicWindow *root)
 	{
 		mWindows.push_back(root);
-		for (auto child : root->GetChilds())
+		for (auto child : (*root->GetChilds()))
 			RecursiveAdding(child);
 	}
 #pragma endregion

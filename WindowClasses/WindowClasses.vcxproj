@@ -79,6 +79,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BasicWindow.cpp" />
+    <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="DrawManager.cpp" />
     <ClCompile Include="IDrawableAlgorithms.cpp" />
     <ClCompile Include="InputManager.cpp" />
@@ -87,9 +88,11 @@
     <ClCompile Include="ViewLayer.cpp" />
     <ClCompile Include="WindowCreationFunctions.cpp" />
     <ClCompile Include="WindowCreatorManager.cpp" />
+    <ClCompile Include="WindowsManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasicWindow.h" />
+    <ClInclude Include="CommandManager.h" />
     <ClInclude Include="DrawManager.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="IDrawableAlgorithms.h" />
@@ -99,6 +102,7 @@
     <ClInclude Include="ViewLayer.h" />
     <ClInclude Include="WindowCreationFunctions.h" />
     <ClInclude Include="WindowCreatorManager.h" />
+    <ClInclude Include="WindowsManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

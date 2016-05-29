@@ -8,11 +8,12 @@ namespace myconsolewindows
 		mCreatorManager = new WindowCreatorManager();
 		SetUpCreator();
 
-
 		// создание окон
-		
-		mDrawManager = new WindowDrawManager();
+
+		mWindowsManager = new WindowsManager(mActiveWindow);
 		mInputManager = new BasicKeyboardInputManager(mActiveWindow);
+		mCommandManager = new CommandManager(mActiveWindow);
+		mDrawManager = new WindowDrawManager(mActiveWindow);
 	}
 
 	void ViewLayer::SetUpConsole()
@@ -35,9 +36,8 @@ namespace myconsolewindows
 		while (true)
 		{
 			if (mInputManager->Check())
-			{
-				
-			}
+				mCommandManager->ExecuteCommands();
+			mDrawManager->DrawWindows();
 		}
 	}
 }

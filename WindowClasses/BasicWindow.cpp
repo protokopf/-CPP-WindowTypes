@@ -15,6 +15,8 @@ namespace myconsolewindows
 
 	BasicWindow::~BasicWindow()
 	{
+		DeleteChilds();
+		delete mChilds;
 	}
 #pragma endregion
 
@@ -47,9 +49,6 @@ namespace myconsolewindows
 		mName = name;
 	}
 
-#pragma endregion
-
-#pragma region Методы Класса
 	WindowCommand* BasicWindow::GetInnerCommand()
 	{
 		return mInnerCommand;
@@ -69,21 +68,26 @@ namespace myconsolewindows
 		return mExtraCommands;
 	}
 
+#pragma endregion
+
+#pragma region Методы Класса
 	void BasicWindow::HideWindow(bool isHidden)
 	{
 		this->mIsHidden = isHidden;
-		for (auto it : mChilds)
+		for (auto it : (*mChilds))
 			it->HideWindow(isHidden);
 	}
 
 	void BasicWindow::AddChildWindow(BasicWindow* child)
 	{
-		mChilds.push_back(child);
+		if (mChilds == nullptr)
+			mChilds = new vector<BasicWindow*>();
+		mChilds->push_back(child);
 		child->mParent = this;
 	}
 	void	BasicWindow::DeleteChilds()
 	{
-		for (auto it = mChilds.begin(); it != mChilds.end(); ++it)
+		for (auto it = mChilds->begin(); it != mChilds->end(); ++it)
 			delete (*it);
 	}
 

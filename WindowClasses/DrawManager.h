@@ -22,6 +22,11 @@ namespace myconsolewindows
 	class WindowDrawManager : public DrawManagerInterface
 	{
 	public:
+		WindowDrawManager(BasicWindow *window) 
+		{
+			RecursiveAdding(window);
+		}
+
 		void InitDraw() override;
 		void DrawWindows() override;
 	};

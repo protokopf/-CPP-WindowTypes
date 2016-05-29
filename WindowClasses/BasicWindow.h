@@ -31,7 +31,7 @@ namespace myconsolewindows
 		bool mIsHidden;
 		bool mIsDeleted;
 
-		vector<BasicWindow*> mChilds;
+		vector<BasicWindow*>* mChilds = nullptr;
 		BasicWindow* mParent = nullptr;
 
 		wstring mName;
@@ -93,7 +93,7 @@ namespace myconsolewindows
 		COLORS GetBack() { return backColor; }
 		COLORS GetFont() { return fontColor; }
 
-		vector<BasicWindow*>& GetChilds() { return mChilds; }
+		vector<BasicWindow*>* GetChilds() { return mChilds; }
 
 		WindowCommand* GetInnerCommand();
 		void SetInnerCommand(WindowCommand* command);

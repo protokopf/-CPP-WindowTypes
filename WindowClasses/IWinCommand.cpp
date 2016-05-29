@@ -18,9 +18,9 @@ namespace myconsolewindows
 		if (commandedWindow->GetParent() != nullptr)
 		{
 			auto childs = commandedWindow->GetChilds();
-			for_each(childs.begin(), childs.end(), [](BasicWindow *win) {win->OutFocus(); });
+			for_each((*childs).begin(), (*childs).end(), [](BasicWindow *win) {win->OutFocus(); });
 			commandedWindow = commandedWindow->GetParent();
-			commandedWindow->GetChilds()[commandedWindow->GetCurrentChildIndex()]->InFocus();
+			(*commandedWindow->GetChilds())[commandedWindow->GetCurrentChildIndex()]->InFocus();
 		}
 	}
 #pragma endregion
@@ -30,12 +30,12 @@ namespace myconsolewindows
 	{
 		auto childs = commandedWindow->GetChilds();
 		auto currentIndex = commandedWindow->GetCurrentChildIndex();
-		for (int i = currentIndex; i < childs.size(); ++i)
+		for (int i = currentIndex; i < (*childs).size(); ++i)
 		{
-			if (!childs[i]->IsHidden())
+			if (!(*childs)[i]->IsHidden())
 			{
-				childs[currentIndex]->OutFocus();
-				childs[i]->InFocus();
+				(*childs)[currentIndex]->OutFocus();
+				(*childs)[i]->InFocus();
 				currentIndex = i;
 				break;
 			}
@@ -50,10 +50,10 @@ namespace myconsolewindows
 		auto currentIndex = commandedWindow->GetCurrentChildIndex();
 		for (int i = currentIndex; i >= 0; --i)
 		{
-			if (!childs[i]->IsHidden())
+			if (!(*childs)[i]->IsHidden())
 			{
-				childs[currentIndex]->OutFocus();
-				childs[i]->InFocus();
+				(*childs)[currentIndex]->OutFocus();
+				(*childs)[i]->InFocus();
 				currentIndex = i;
 				break;
 			}
