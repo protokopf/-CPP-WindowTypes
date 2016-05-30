@@ -80,6 +80,7 @@
   <ItemGroup>
     <ClCompile Include="BasicWindow.cpp" />
     <ClCompile Include="CommandManager.cpp" />
+    <ClCompile Include="ConsoleMouse.cpp" />
     <ClCompile Include="DrawManager.cpp" />
     <ClCompile Include="IDrawableAlgorithms.cpp" />
     <ClCompile Include="InputManager.cpp" />
@@ -94,6 +95,7 @@
   <ItemGroup>
     <ClInclude Include="BasicWindow.h" />
     <ClInclude Include="CommandManager.h" />
+    <ClInclude Include="ConsoleMouse.h" />
     <ClInclude Include="DrawManager.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="IDrawableAlgorithms.h" />

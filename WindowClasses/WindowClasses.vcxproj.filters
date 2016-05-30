@@ -87,6 +87,9 @@
     <ClCompile Include="PluralWindow.cpp">
       <Filter>Source Files\ViewCPP\WindowTypesCPP</Filter>
     </ClCompile>
+    <ClCompile Include="ConsoleMouse.cpp">
+      <Filter>Source Files\ViewCPP\ExtraTypesCPP</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasicWindow.h">
@@ -127,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="PluralWindow.h">
       <Filter>Header Files\View\WindowTypesH</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleMouse.h">
+      <Filter>Header Files\View\ExtraTypesH</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

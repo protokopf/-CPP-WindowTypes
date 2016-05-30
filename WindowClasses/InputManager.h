@@ -35,17 +35,10 @@ namespace myconsolewindows
 	class MouseKeyboardInputManager : public BasicKeyboardInputManager
 	{
 	protected:
-		bool CheckMouseInput();
-		HWND hwndConsole;
-		RECT rectConsole;
-		POINT posCursor;
 
-		void CutWindowRect();
-		bool IntersectConsoleRect();
 	public:
 		MouseKeyboardInputManager(BasicWindow*& refToWin) : BasicKeyboardInputManager(refToWin)
 		{
-			hwndConsole = GetConsoleWindow();
 		}
 
 		bool Check() override;

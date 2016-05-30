@@ -54,36 +54,9 @@ namespace myconsolewindows
 
 #pragma region MouseKeyboardInputManager
 	using mkim = MouseKeyboardInputManager;
-	void mkim::CutWindowRect()
-	{
-		rectConsole.left += 10;
-		rectConsole.right -= 10;
-		rectConsole.bottom -= 10;
-		rectConsole.top += 32;
-	}
-	bool mkim::IntersectConsoleRect()
-	{
-		return (posCursor.x >= rectConsole.left && posCursor.x <= rectConsole.right)
-			&& (posCursor.y >= rectConsole.top && posCursor.y <= rectConsole.bottom);
-	}
-
-	bool mkim::CheckMouseInput()
-	{
-		GetWindowRect(hwndConsole, &rectConsole);
-		GetCursorPos(&posCursor);
-		CutWindowRect();
-		if (IntersectConsoleRect())
-		{
-
-		}
-		return true;
-	}
 	
 	bool mkim::Check()
 	{
-		if (CheckMouseInput())
-			return true;
-
 		if (_kbhit() && (KeyReact(_getch())));
 			return true;
 		return false;
