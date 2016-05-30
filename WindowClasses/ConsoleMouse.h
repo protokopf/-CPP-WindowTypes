@@ -14,6 +14,7 @@ namespace myconsolewindows
 
 		POINT pCursorAbs;
 		POINT pCursorRel;
+		POINT pCursorSym;
 
 		bool wasClicked;
 

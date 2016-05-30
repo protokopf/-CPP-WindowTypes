@@ -9,6 +9,9 @@ namespace myconsolewindows
 	{
 		hwConsole = GetConsoleWindow();
 		PrepareInformation();
+		CONSOLE_FONT_INFOEX consoleInfo{ sizeof(consoleInfo) };
+		GetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &consoleInfo);
+		fontSize = GetConsoleFontSize(GetStdHandle(STD_OUTPUT_HANDLE), consoleInfo.nFont);
 	}
 #pragma endregion
 
@@ -53,8 +56,9 @@ namespace myconsolewindows
 	}
 	POINT cm::GetCursorPositionInSymbols()
 	{
-		// реализовать метод
-		return pCursorRel;
+		pCursorSym.x = pCursorRel.x / fontSize.X;
+		pCursorSym.y = pCursorRel.y / fontSize.Y;
+		return pCursorSym;
 	}
 
 #pragma endregion

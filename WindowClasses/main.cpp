@@ -19,7 +19,7 @@ int main()
 	{
 		if (mouse.IsCursorInConsole())
 		{
-			cout << mouse.GetCursorPositionInPixels().x << " : " << mouse.GetCursorPositionInPixels().y << endl;
+			cout << mouse.GetCursorPositionInSymbols().x << " : " << mouse.GetCursorPositionInSymbols().y << endl;
 		}
 	}
 
