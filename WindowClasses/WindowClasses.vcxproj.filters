@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Header Files\View">
       <UniqueIdentifier>{87622a9a-81c9-4d27-9e22-2c847a90bb67}</UniqueIdentifier>
     </Filter>
@@ -49,6 +45,10 @@
     <Filter Include="Source Files\ViewCPP\WindowManagersCPP">
       <UniqueIdentifier>{a851f028-7312-4808-b218-76196c29e1c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -83,6 +83,9 @@
     </ClCompile>
     <ClCompile Include="WindowsManager.cpp">
       <Filter>Source Files\ViewCPP\WindowManagersCPP</Filter>
+    </ClCompile>
+    <ClCompile Include="PluralWindow.cpp">
+      <Filter>Source Files\ViewCPP\WindowTypesCPP</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="WindowsManager.h">
       <Filter>Header Files\View\WindowManagersH</Filter>
+    </ClInclude>
+    <ClInclude Include="PluralWindow.h">
+      <Filter>Header Files\View\WindowTypesH</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

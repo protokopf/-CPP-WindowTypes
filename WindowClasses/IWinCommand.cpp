@@ -16,7 +16,7 @@ namespace myconsolewindows
 	#pragma region GoToParentWindowCommand
 	void GoToParentWindowCommand::Execute()
 	{
-		if (commandedWindow->GetParent() != nullptr)
+		if (commandedWindow->GetParent())
 		{
 			auto childs = commandedWindow->GetChilds();
 			for_each((*childs).begin(), (*childs).end(), [](BasicWindow *win) {win->OutFocus(); });
@@ -25,27 +25,39 @@ namespace myconsolewindows
 		}
 	}
 #pragma endregion
+	#pragma region GoToChildWindowCommand
+	void GoToChildWindowCommand::Execute()
+	{
+		auto childIndex = commandedWindow->GetCurrentChildIndex();
+		auto childs = commandedWindow->GetChilds();
+		commandedWindow->OutFocus();
+		commandedWindow = (*childs)[childIndex];
+		commandedWindow->InFocus();
+	}
+#pragma endregion
 
-	#pragma region GoToNextChildWindowCommand
-	void GoToNextChildWindowCommand::Execute()
+	#pragma region SlideToNextChildWindowCommand
+	void SlideToNextChildWindowCommand::Execute()
 	{
 		auto childs = commandedWindow->GetChilds();
-		auto currentIndex = commandedWindow->GetCurrentChildIndex();
-		for (int i = currentIndex; i < (*childs).size(); ++i)
+		if (childs)
 		{
-			if (!(*childs)[i]->IsHidden())
+			auto currentIndex = commandedWindow->GetCurrentChildIndex();
+			for (int i = currentIndex; i < (*childs).size(); ++i)
 			{
-				(*childs)[currentIndex]->OutFocus();
-				(*childs)[i]->InFocus();
-				currentIndex = i;
-				break;
+				if (!(*childs)[i]->IsHidden())
+				{
+					(*childs)[currentIndex]->OutFocus();
+					(*childs)[i]->InFocus();
+					currentIndex = i;
+					break;
+				}
 			}
 		}
 	}
 #pragma endregion
-
-	#pragma region GoToPrevChildWindowCommand
-	void GoToPrevChildWindowCommand::Execute()
+	#pragma region SlideToPrevChildWindowCommand
+	void SlideToPrevChildWindowCommand::Execute()
 	{
 		auto childs = commandedWindow->GetChilds();
 		auto currentIndex = commandedWindow->GetCurrentChildIndex();
@@ -62,7 +74,7 @@ namespace myconsolewindows
 	}
 #pragma endregion
 
-#pragma region LayerMethodWindowCommand
+	#pragma region LayerMethodWindowCommand
 	using lmwc = LayerMethodWindowCommand;
 
 	lmwc::LayerMethodWindowCommand(BasicWindow*& window, ViewLayer* lpLayer, lmwc::ViewLayerMethod lpMethod):

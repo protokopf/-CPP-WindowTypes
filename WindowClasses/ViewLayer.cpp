@@ -6,15 +6,17 @@ namespace myconsolewindows
 	ViewLayer::ViewLayer()
 	{
 		mCreatorManager = new WindowCreatorManager();
-		SetUpCreator();
 
-		// создание окон
+		SetUpConsole();
+		SetUpCreator();
+		SetUpWindows();
 
 		mWindowsManager = new WindowsManager(mActiveWindow,allWindows);
-		mDrawManager = new WindowDrawManager(mActiveWindow, allWindows);
+		mDrawManager = new WindowDrawManager(allWindows);
+		mCommandManager = new CommandManager(allWindows);
 
 		mInputManager = new BasicKeyboardInputManager(mActiveWindow);
-		mCommandManager = new CommandManager(mActiveWindow);
+		
 	}
 
 	void ViewLayer::SetUpConsole()
@@ -27,8 +29,24 @@ namespace myconsolewindows
 	}
 	void ViewLayer::SetUpCreator()
 	{
-		mCreatorManager->RegisternWindow("PluralWindow", CreatePluralWindow);
+		mCreatorManager->RegisternWindow(L"PluralWindow", CreatePluralWindow);
 		// регистрация других окон по мере добавления новых окон
+	}
+	void ViewLayer::SetUpWindows()
+	{
+		BasicWindow* mainWindow = mCreatorManager->CreateMyWindow(L"PluralWindow", mActiveWindow, L"MainWindow", 0, 0, 79, 24, mConsoleHandle);
+		mainWindow->AddChildWindow(mCreatorManager->CreateMyWindow(L"PluralWindow", mActiveWindow, L"Child1", 12, 12, 10, 10, mConsoleHandle));
+		mActiveWindow = mainWindow;
+
+		RecursiveAddingWindows(mActiveWindow);
+	}
+
+	void ViewLayer::RecursiveAddingWindows(BasicWindow* root)
+	{
+		allWindows.push_back(root);
+		if (root->GetChilds())
+			for (auto child : (*root->GetChilds()))
+				RecursiveAddingWindows(child);
 	}
 
 	void ViewLayer::MainLoop()

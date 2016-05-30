@@ -36,17 +36,26 @@ namespace myconsolewindows
 
 		void Execute() override;
 	};
-	class GoToNextChildWindowCommand : public WindowCommand
+	class GoToChildWindowCommand : public WindowCommand
 	{
 	public:
-		GoToNextChildWindowCommand(BasicWindow *& goalWindow) : WindowCommand(goalWindow) {}
+		GoToChildWindowCommand() = default;
+		GoToChildWindowCommand(BasicWindow *& goalWindow) : WindowCommand(goalWindow){}
 
 		void Execute() override;
 	};
-	class GoToPrevChildWindowCommand : public WindowCommand
+
+	class SlideToNextChildWindowCommand : public WindowCommand
 	{
 	public:
-		GoToPrevChildWindowCommand(BasicWindow *& goalWindow) : WindowCommand(goalWindow) {}
+		SlideToNextChildWindowCommand(BasicWindow *& goalWindow) : WindowCommand(goalWindow) {}
+
+		void Execute() override;
+	};
+	class SlideToPrevChildWindowCommand : public WindowCommand
+	{
+	public:
+		SlideToPrevChildWindowCommand(BasicWindow *& goalWindow) : WindowCommand(goalWindow) {}
 
 		void Execute() override;
 	};

@@ -33,11 +33,11 @@ namespace myconsolewindows
 		{
 		case MOVES::UP:
 		case MOVES::LEFT:
-			refToCurrentWindowPtr->SetExtraCommand(new GoToNextChildWindowCommand(refToCurrentWindowPtr));
+			refToCurrentWindowPtr->SetExtraCommand(new SlideToNextChildWindowCommand(refToCurrentWindowPtr));
 			break;
 		case MOVES::DOWN:
 		case MOVES::RIGHT:
-			refToCurrentWindowPtr->SetExtraCommand(new GoToPrevChildWindowCommand(refToCurrentWindowPtr));
+			refToCurrentWindowPtr->SetExtraCommand(new SlideToPrevChildWindowCommand(refToCurrentWindowPtr));
 			break;
 		case MOVES::ENTER:
 			refToCurrentWindowPtr->IsClicked(true);

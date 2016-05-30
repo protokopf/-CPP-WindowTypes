@@ -6,9 +6,8 @@
 namespace myconsolewindows
 {
 #pragma region Конструкторы и деструкторы
-	CommandManager::CommandManager(BasicWindow* window)
+	CommandManager::CommandManager(vector<BasicWindow*>& refToVector) : CommandManagerInterface(refToVector)
 	{
-		AddWindow(window);
 	}
 #pragma endregion
 
@@ -17,24 +16,12 @@ namespace myconsolewindows
 #pragma endregion
 
 #pragma region Методы класса
-	void CommandManager::AddWindow(BasicWindow* root)
-	{
-		mWindows.push_back(root);
-		for (auto child : *(root->GetChilds()))
-			AddWindow(child);
-	}
-	void CommandManager::RemoveWindow(BasicWindow* root)
-	{
-		for (auto child : *(root->GetChilds()))
-			RemoveWindow(child);
-		mWindows.erase(std::find(mWindows.begin(), mWindows.end(), root));
-	}
 
 	void CommandManager::ExecuteCommands()
 	{
-		for (int i = 0; i < mWindows.size(); ++i)
+		for (int i = 0; i < refToAllWindows.size(); ++i)
 		{
-			auto commands = mWindows[i]->GetExtraCommands();
+			auto commands = refToAllWindows[i]->GetExtraCommands();
 			if (commands.size() > 0)
 			{
 				for (int j = 0; j < commands.size(); ++j)

@@ -13,7 +13,7 @@ namespace myconsolewindows
 	protected:
 		vector<BasicWindow*>& refToAllWindows;
 	public:
-		DrawManagerInterface(BasicWindow* root, vector<BasicWindow*>& refToVector) : refToAllWindows(refToVector)
+		DrawManagerInterface(vector<BasicWindow*>& refToVector) : refToAllWindows(refToVector)
 		{
 
 		}
@@ -24,7 +24,7 @@ namespace myconsolewindows
 	class WindowDrawManager : public DrawManagerInterface
 	{
 	public:
-		WindowDrawManager(BasicWindow *window, vector<BasicWindow*>& refToVector) : DrawManagerInterface(window,refToVector)
+		WindowDrawManager(vector<BasicWindow*>& refToVector) : DrawManagerInterface(refToVector)
 		{
 		}
 

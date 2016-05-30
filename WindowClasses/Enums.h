@@ -5,7 +5,8 @@ enum COLORS
 {
 	Black = 0, Blue = 1, Green = 2, Cyan = 3, Red = 4, Magenta = 5, Brown = 6,
 	LightGray = 7, DarkGray = 8, LightBlue = 9, LightGreen = 10, LightCyan = 11,
-	LightRed = 12, LightMagenta = 13, Yellow = 14, White = 15
+	LightRed = 12, LightMagenta = 13, Yellow = 14, White = 15,
+	Marked = Red, Font = Black, Back = White
 };
 enum MOVES
 {
@@ -22,6 +23,13 @@ enum BORDER
 	LeftBorder = 0x2502,
 	RightBorder = 0x2502,
 	Space = 0x0020
+};
+enum MAIN_SETT
+{
+	X = 0,
+	Y = 0,
+	W = 79,
+	H = 24
 };
 
 #endif

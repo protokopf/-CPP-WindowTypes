@@ -33,6 +33,8 @@ namespace myconsolewindows
 
 		void SetUpConsole();
 		void SetUpCreator();
+		void SetUpWindows();
+		void RecursiveAddingWindows(BasicWindow* root);
 
 		void HelloWorld() { cout << "HelloWorld!\n"; }
 	public:

@@ -3,6 +3,9 @@
 
 #include <string>
 #include <map>
+#include <conio.h>
+#include <Windows.h>
+#include "Enums.h"
 
 using namespace std;
 
@@ -13,17 +16,18 @@ namespace myconsolewindows
 	class WindowCreatorManager
 	{
 	public:
-		using CreateWindowCallBack = BasicWindow*(string name, int x, int y, int w, int h);
+		using CreateWindowCallBack = BasicWindow*(BasicWindow*& actWindow, wstring name, int x, int y, int w, int h, HANDLE &console, 
+			COLORS marked, COLORS back, COLORS font);
 	private:
-		using CallBackMap = map < string, CreateWindowCallBack* > ;
+		using CallBackMap = map<wstring, CreateWindowCallBack*>;
 	public:
 		WindowCreatorManager(const WindowCreatorManager&) = delete;
 		WindowCreatorManager() = default;
 
-		bool RegisternWindow(string winId, CreateWindowCallBack* winFunc);
-		bool UnregisterWindow(string windId);
+		bool RegisternWindow(wstring winId, CreateWindowCallBack* winFunc);
+		bool UnregisterWindow(wstring windId);
 
-		BasicWindow* CreateMyWindow(string winId, string name, int x, int y, int h, int w);
+		BasicWindow* CreateMyWindow(wstring winId, BasicWindow*& actWindow, wstring name, int x, int y, int w, int h, HANDLE &console, COLORS marked = COLORS::Marked, COLORS back = COLORS::Back, COLORS font = COLORS::Font);
 	private:
 		
 		CallBackMap mCallBacks;

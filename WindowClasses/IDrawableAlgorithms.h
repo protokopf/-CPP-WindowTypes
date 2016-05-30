@@ -20,20 +20,21 @@ namespace myconsolewindows
 		HANDLE handle;
 		WORD   color;
 		void ExtractValuesFromWindow(BasicWindow *window);
+	public:
+		virtual ~ViewAlgorithm() {}
 	};
 
 	class IDrawAlgorithm : public ViewAlgorithm
 	{
 	public:
 		virtual void Draw(BasicWindow *window) = 0;
-		virtual ~IDrawAlgorithm(){}
+		virtual ~IDrawAlgorithm() {}
 	};
-	class BorderDrawAlgorithm : IDrawAlgorithm
+	class BorderDrawAlgorithm : public IDrawAlgorithm
 	{
 	public:
 		void Draw(BasicWindow *window) override;
-
-		~BorderDrawAlgorithm();
+		virtual ~BorderDrawAlgorithm(){}
 	};
 
 	class ADrawDecorator : public IDrawAlgorithm
@@ -49,12 +50,12 @@ namespace myconsolewindows
 		{
 			component->Draw(window);
 		}
-		~ADrawDecorator()
+		virtual ~ADrawDecorator()
 		{
 			delete component;
 		}
 	};
-	class FillSquareDrawDecorator : ADrawDecorator
+	class FillSquareDrawDecorator : public ADrawDecorator
 	{
 	private:
 		void FillWindowSquare(BasicWindow *window);
@@ -70,6 +71,7 @@ namespace myconsolewindows
 			ADrawDecorator::Draw(window);
 			FillWindowSquare(window);
 		}
+		virtual ~FillSquareDrawDecorator(){}
 	};
 
 	class ICleanAlgorithm : public ViewAlgorithm

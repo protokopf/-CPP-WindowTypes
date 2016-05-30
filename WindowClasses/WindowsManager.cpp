@@ -30,18 +30,19 @@ namespace myconsolewindows
 
 		mWindows.insert({ path, window });
 		refToAllWindows.push_back(window);
-
-		for (auto child : (*window->GetChilds()))
-			RecursiveAdding(child, path);
-		path.erase(path.begin() + startIndex, path.begin() + window->GetName().size() + 1);
+		if (window->GetChilds())
+			for (auto child : (*window->GetChilds()))
+				RecursiveAdding(child, path);
+		path.erase(path.begin() + startIndex, path.begin() + path.size());
 	}
 	void WindowsManager::AddWindow(BasicWindow *window)
 	{
 		wstring path = window->GetName();
 		mWindows.insert({ path, window });
 		refToAllWindows.push_back(window);
-		for (auto child : (*window->GetChilds()))
-			RecursiveAdding(child, path);
+		if (window->GetChilds())
+			for (auto child : (*window->GetChilds()))
+				RecursiveAdding(child, path);
 	}
 #pragma endregion
 }

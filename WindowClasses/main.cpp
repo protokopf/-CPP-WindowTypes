@@ -6,7 +6,10 @@ using namespace myconsolewindows;
 
 
 int main()
-{	
+{
+	ViewLayer layer;
+	layer.MainLoop();
+
 	system("pause");
 
 	return 0;

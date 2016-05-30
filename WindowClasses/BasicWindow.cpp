@@ -1,4 +1,5 @@
 #include "BasicWindow.h"
+#include "Enums.h"
 
 namespace myconsolewindows
 {
@@ -6,9 +7,13 @@ namespace myconsolewindows
 	BasicWindow::BasicWindow()
 	{
 	}
-	BasicWindow::BasicWindow(wstring name, int x, int y, int w, int h, HANDLE &console,WindowCommand *command, IDrawAlgorithm *drAl, ICleanAlgorithm *clAl) :
+	BasicWindow::BasicWindow(wstring name, int x, int y, int w, int h, HANDLE &console, IDrawAlgorithm *drAl, ICleanAlgorithm *clAl, WindowCommand *command,
+		COLORS marked, COLORS back, COLORS font) :
 		mName(name), hConsole(console),mInnerCommand(command), mDrawAlgorithm(drAl), mCleanAlgorithm(clAl)
 	{
+		backColor = unmarkedColor = back;
+		markedColor = marked;
+		fontColor = font;
 		mSize = { w, h };
 		mPosition = { x, y };
 	}
@@ -112,12 +117,12 @@ namespace myconsolewindows
 
 	void BasicWindow::InFocus()
 	{
-		backColor = COLORS::Red;
+		backColor = markedColor;
 		IsChanged(true);
 	}
 	void BasicWindow::OutFocus()
 	{
-		backColor = COLORS::White;
+		backColor = unmarkedColor;
 		IsChanged(true);
 	}
 #pragma endregion

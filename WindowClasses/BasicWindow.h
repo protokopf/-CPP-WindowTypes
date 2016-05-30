@@ -14,22 +14,25 @@ namespace myconsolewindows
 	// Перед созданием какого-то окна в каркасе нужно настроить консольку (убрать курсор, установить размер)
 	class BasicWindow
 	{
-	private:
+	protected:
 		int mCurrentChildIndex = 0;
 		HANDLE hConsole;
 
 		COLORS backColor;
 		COLORS fontColor;
 
+		COLORS markedColor;
+		COLORS unmarkedColor;
+
 		COORD mPosition;
 		COORD mSize;
 
-		bool mIsChanged;
-		bool mIsClicked;
+		bool mIsChanged = false;
+		bool mIsClicked = false;
 
-		bool mIsInteractable;
-		bool mIsHidden;
-		bool mIsDeleted;
+		bool mIsInteractable = true;
+		bool mIsHidden = false;
+		bool mIsDeleted = false;
 
 		vector<BasicWindow*>* mChilds = nullptr;
 		BasicWindow* mParent = nullptr;
@@ -45,7 +48,8 @@ namespace myconsolewindows
 		void DeleteChilds();
 	public:
 		BasicWindow();
-		BasicWindow(wstring name, int x, int y, int w, int h, HANDLE &console,WindowCommand* command = nullptr, IDrawAlgorithm *drAl = nullptr, ICleanAlgorithm *clAl = nullptr);
+		BasicWindow(wstring name, int x, int y, int w, int h, HANDLE &console, IDrawAlgorithm *drAl, ICleanAlgorithm *clAl, WindowCommand* command,
+			COLORS marked, COLORS back, COLORS font);
 
 		void HideWindow(bool reallyShow);
 		void InFocus();

@@ -85,6 +85,7 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IWinCommand.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PluralWindow.cpp" />
     <ClCompile Include="ViewLayer.cpp" />
     <ClCompile Include="WindowCreationFunctions.cpp" />
     <ClCompile Include="WindowCreatorManager.cpp" />
@@ -99,6 +100,7 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="IObserver.h" />
     <ClInclude Include="IWinCommand.h" />
+    <ClInclude Include="PluralWindow.h" />
     <ClInclude Include="ViewLayer.h" />
     <ClInclude Include="WindowCreationFunctions.h" />
     <ClInclude Include="WindowCreatorManager.h" />
