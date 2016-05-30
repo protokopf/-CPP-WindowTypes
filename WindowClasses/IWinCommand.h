@@ -59,6 +59,18 @@ namespace myconsolewindows
 
 		void Execute() override;
 	};
+	class SlideToConcreteChildWindowCommand : public WindowCommand
+	{
+	private:
+		int concreteIndex = 0;
+	public:
+		SlideToConcreteChildWindowCommand(BasicWindow*& refToAct, int index) : WindowCommand(refToAct)
+		{
+			concreteIndex = index;
+		}
+
+		void Execute() override;
+	};
 
 	class LayerMethodWindowCommand : public WindowCommand
 	{

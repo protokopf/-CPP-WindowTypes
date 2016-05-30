@@ -3,6 +3,7 @@
 
 #include <Windows.h>
 #include <conio.h>
+#include "ConsoleMouse.h"
 
 using namespace std;
 namespace myconsolewindows
@@ -35,7 +36,10 @@ namespace myconsolewindows
 	class MouseKeyboardInputManager : public BasicKeyboardInputManager
 	{
 	protected:
+		ConsoleMouse mMouse;
 
+		bool IsWindowContainPoint(BasicWindow* window, POINT point);
+		bool CheckIntersectionWithWindows(POINT point);
 	public:
 		MouseKeyboardInputManager(BasicWindow*& refToWin) : BasicKeyboardInputManager(refToWin)
 		{

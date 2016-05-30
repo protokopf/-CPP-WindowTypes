@@ -5,7 +5,7 @@
 
 namespace myconsolewindows
 {
-	#pragma region InnerWindowCommand
+#pragma region InnerWindowCommand
 	void InnerWindowCommand::Execute()
 	{
 		if (commandedWindow)
@@ -13,7 +13,7 @@ namespace myconsolewindows
 	}
 #pragma endregion
 
-	#pragma region GoToParentWindowCommand
+#pragma region GoToParentWindowCommand
 	void GoToParentWindowCommand::Execute()
 	{
 		if (commandedWindow->GetParent())
@@ -26,7 +26,7 @@ namespace myconsolewindows
 		}
 	}
 #pragma endregion
-	#pragma region GoToChildWindowCommand
+#pragma region GoToChildWindowCommand
 	void GoToChildWindowCommand::Execute()
 	{
 		auto childIndex = commandedWindow->GetCurrentChildIndex();
@@ -40,7 +40,7 @@ namespace myconsolewindows
 	}
 #pragma endregion
 
-	#pragma region SlideToNextChildWindowCommand
+#pragma region SlideToNextChildWindowCommand
 	void SlideToNextChildWindowCommand::Execute()
 	{
 		auto childs = commandedWindow->GetChilds();
@@ -60,7 +60,7 @@ namespace myconsolewindows
 		}
 	}
 #pragma endregion
-	#pragma region SlideToPrevChildWindowCommand
+#pragma region SlideToPrevChildWindowCommand
 	void SlideToPrevChildWindowCommand::Execute()
 	{
 		auto childs = commandedWindow->GetChilds();
@@ -78,6 +78,19 @@ namespace myconsolewindows
 				}
 			}
 		}
+	}
+#pragma endregion
+#pragma region SlideToConcreteChildWindowCommand
+	void SlideToConcreteChildWindowCommand::Execute()
+	{
+		auto childs = commandedWindow->GetChilds();
+		int currentIndex = commandedWindow->GetCurrentChildIndex();
+		if (!(concreteIndex >= 0 && concreteIndex < childs->size()) || concreteIndex == currentIndex)
+			return;
+		(*childs)[currentIndex]->OutFocus();
+		(*childs)[concreteIndex]->InFocus();
+		commandedWindow->SetCurrentChildIndex(concreteIndex);
+
 	}
 #pragma endregion
 

@@ -11,18 +11,8 @@ using namespace myconsolewindows;
 
 int main()
 {
-	//ViewLayer layer;
-	//layer.MainLoop();
-
-	ConsoleMouse mouse;
-	while (true)
-	{
-		if (mouse.IsCursorInConsole())
-		{
-			cout << mouse.GetCursorPositionInSymbols().x << " : " << mouse.GetCursorPositionInSymbols().y << endl;
-		}
-	}
-
+	ViewLayer layer;
+	layer.MainLoop();
 	system("pause");
 
 	return 0;

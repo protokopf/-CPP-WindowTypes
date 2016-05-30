@@ -57,11 +57,37 @@ namespace myconsolewindows
 	
 	bool mkim::Check()
 	{
+		if (mMouse.IsCursorInConsole())
+		{
+			// может, следует убрать возврат из функции, чтобы моно было еще обрабатывать нажатия клавиш
+			if (CheckIntersectionWithWindows(mMouse.GetCursorPositionInSymbols()))
+				return true;
+		}
 		if (_kbhit() && (KeyReact(_getch())));
 			return true;
 		return false;
 	}
 
+	bool mkim::IsWindowContainPoint(BasicWindow* window, POINT point)
+	{
+		auto winPos = window->GetPosition();
+		auto winSize = window->GetSize();
+		return (point.x >= (winPos.X) && point.x <= (winPos.X + winSize.X)) &&
+			(point.y >= (winPos.Y) && point.y <= (winPos.Y + winSize.Y));
+	}
+	bool mkim::CheckIntersectionWithWindows(POINT point)
+	{
+		auto childs = refToCurrentWindowPtr->GetChilds();
+		for (int i = 0; i < childs->size(); ++i)
+		{
+			if (!(*childs)[i]->IsHidden() && (*childs)[i]->IsInteractable() && IsWindowContainPoint((*childs)[i], point))
+			{
+				refToCurrentWindowPtr->SetExtraCommand(new SlideToConcreteChildWindowCommand(refToCurrentWindowPtr, i));
+				return true;
+			}
+		}
+		return false;
+	}
 #pragma endregion
 
 
