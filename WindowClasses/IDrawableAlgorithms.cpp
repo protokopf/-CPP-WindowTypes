@@ -76,18 +76,18 @@ namespace myconsolewindows
 		LPDWORD length = new DWORD;
 
 		FillConsoleOutputAttribute(handle, color, winSize.X, { winPos.X, winPos.Y }, length);
-		FillConsoleOutputAttribute(handle, color, winSize.X, { winPos.X + 1, winPos.Y }, length);
+		FillConsoleOutputAttribute(handle, color, winSize.X, { winPos.X, maxY }, length);
 
 		FillConsoleOutputCharacterW(handle, BORDER::Space, winSize.X, { winPos.X, winPos.Y }, length);
-		FillConsoleOutputCharacterW(handle, BORDER::Space, winSize.X, { winPos.X , maxY }, length);
+		FillConsoleOutputCharacterW(handle, BORDER::Space, winSize.X, { winPos.X, maxY }, length);
 
 		for (int y = winPos.Y; y < maxY; ++y)
 		{
-			FillConsoleOutputAttribute(handle, color, winSize.X, { winPos.X, y }, length);
-			FillConsoleOutputAttribute(handle, color, winSize.X, { maxX, y }, length);
+			FillConsoleOutputAttribute(handle, color, 1, { winPos.X, y }, length);
+			FillConsoleOutputAttribute(handle, color, 1, { maxX, y }, length);
 
-			FillConsoleOutputCharacterW(handle, BORDER::Space, winSize.X, { winPos.X, y }, length);
-			FillConsoleOutputCharacterW(handle, BORDER::Space, winSize.X, { maxX, y }, length);
+			FillConsoleOutputCharacterW(handle, BORDER::Space, 1, { winPos.X, y }, length);
+			FillConsoleOutputCharacterW(handle, BORDER::Space, 1, { maxX, y }, length);
 		}
 		delete length;
 	}

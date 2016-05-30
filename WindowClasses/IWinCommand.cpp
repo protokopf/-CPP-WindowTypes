@@ -19,7 +19,8 @@ namespace myconsolewindows
 		if (commandedWindow->GetParent())
 		{
 			auto childs = commandedWindow->GetChilds();
-			for_each((*childs).begin(), (*childs).end(), [](BasicWindow *win) {win->OutFocus(); });
+			if (childs)
+				for_each((*childs).begin(), (*childs).end(), [](BasicWindow *win) {win->OutFocus(); });
 			commandedWindow = commandedWindow->GetParent();
 			(*commandedWindow->GetChilds())[commandedWindow->GetCurrentChildIndex()]->InFocus();
 		}
@@ -30,9 +31,12 @@ namespace myconsolewindows
 	{
 		auto childIndex = commandedWindow->GetCurrentChildIndex();
 		auto childs = commandedWindow->GetChilds();
-		commandedWindow->OutFocus();
-		commandedWindow = (*childs)[childIndex];
-		commandedWindow->InFocus();
+		if (childs)
+		{
+			commandedWindow->OutFocus();
+			commandedWindow = (*childs)[childIndex];
+			commandedWindow->InFocus();
+		}
 	}
 #pragma endregion
 
@@ -40,16 +44,16 @@ namespace myconsolewindows
 	void SlideToNextChildWindowCommand::Execute()
 	{
 		auto childs = commandedWindow->GetChilds();
-		if (childs)
+		if (childs && childs->size() > 2)
 		{
 			auto currentIndex = commandedWindow->GetCurrentChildIndex();
-			for (int i = currentIndex; i < (*childs).size(); ++i)
+			for (int i = currentIndex + 1; i < (*childs).size(); ++i)
 			{
 				if (!(*childs)[i]->IsHidden())
 				{
 					(*childs)[currentIndex]->OutFocus();
 					(*childs)[i]->InFocus();
-					currentIndex = i;
+					commandedWindow->SetCurrentChildIndex(i);
 					break;
 				}
 			}
@@ -60,15 +64,18 @@ namespace myconsolewindows
 	void SlideToPrevChildWindowCommand::Execute()
 	{
 		auto childs = commandedWindow->GetChilds();
-		auto currentIndex = commandedWindow->GetCurrentChildIndex();
-		for (int i = currentIndex; i >= 0; --i)
+		if (childs && childs->size() > 2)
 		{
-			if (!(*childs)[i]->IsHidden())
+			auto currentIndex = commandedWindow->GetCurrentChildIndex();
+			for (int i = currentIndex - 1; i >= 0; --i)
 			{
-				(*childs)[currentIndex]->OutFocus();
-				(*childs)[i]->InFocus();
-				currentIndex = i;
-				break;
+				if (!(*childs)[i]->IsHidden())
+				{
+					(*childs)[currentIndex]->OutFocus();
+					(*childs)[i]->InFocus();
+					commandedWindow->SetCurrentChildIndex(i);
+					break;
+				}
 			}
 		}
 	}

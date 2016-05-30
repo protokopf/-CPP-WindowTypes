@@ -36,8 +36,12 @@ namespace myconsolewindows
 	void ViewLayer::SetUpWindows()
 	{
 		BasicWindow* mainWindow = mCreatorManager->CreateMyWindow(L"PluralWindow", mActiveWindow, L"MainWindow", 0, 0, 79, 24, mConsoleHandle);
-		mainWindow->AddChildWindow(mCreatorManager->CreateMyWindow(L"PluralWindow", mActiveWindow, L"Child1", 12, 12, 10, 10, mConsoleHandle));
-		mActiveWindow = mainWindow;
+		mainWindow->AddChildWindow(mCreatorManager->CreateMyWindow(L"PluralWindow", mActiveWindow, L"Child1", 5, 5, 15, 5, mConsoleHandle));
+		mainWindow->AddChildWindow(mCreatorManager->CreateMyWindow(L"PluralWindow", mActiveWindow, L"Child2", 30, 10, 4, 4, mConsoleHandle));
+		mainWindow->AddChildWindow(mCreatorManager->CreateMyWindow(L"PluralWindow", mActiveWindow, L"Child3", 50, 5, 3, 4, mConsoleHandle));
+		
+		if ((mActiveWindow = mainWindow)->GetChilds())
+			(*mActiveWindow->GetChilds())[0]->InFocus();
 	}
 
 

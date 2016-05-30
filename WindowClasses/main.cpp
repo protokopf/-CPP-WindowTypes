@@ -1,5 +1,6 @@
 #include "ViewLayer.h"
 #include "IWinCommand.h"
+#include <conio.h>
 
 using namespace std;
 using namespace myconsolewindows;

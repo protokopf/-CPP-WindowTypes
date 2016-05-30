@@ -16,20 +16,22 @@ namespace myconsolewindows
 #pragma endregion
 
 #pragma region Методы класса
-
 	void CommandManager::ExecuteCommands()
 	{
-		for (int i = 0; i < refToAllWindows->size(); ++i)
+		for (auto window : (*refToAllWindows))
 		{
-			auto commands = (*refToAllWindows)[i]->GetExtraCommands();
-			if (commands.size() > 0)
+			if (window->IsInteractable())
 			{
-				for (int j = 0; j < commands.size(); ++j)
+				auto commands = window->GetExtraCommands();
+				if (commands.size() > 0)
 				{
-					commands[j]->Execute();
-					delete commands[j];
+					for (int j = 0; j < commands.size(); ++j)
+					{
+						commands[j]->Execute();
+						delete commands[j];
+					}
+					window->GetExtraCommands().clear();
 				}
-				commands.clear();
 			}
 		}
 	}

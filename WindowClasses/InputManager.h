@@ -18,7 +18,7 @@ namespace myconsolewindows
 	{
 
 	private:
-		void KeyReact(char key);
+		void KeyReact(wchar_t key);
 	public:
 		BasicKeyboardInputManager() = default;
 		BasicKeyboardInputManager(BasicWindow *& refToAct) : InputManagerInterface(refToAct)
@@ -28,6 +28,8 @@ namespace myconsolewindows
 
 		bool Check() override;
 	};
+
+	//class MouseKeyboardInputManager : public InputManagerInterface
 }
 
 

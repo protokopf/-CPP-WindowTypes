@@ -27,16 +27,16 @@ namespace myconsolewindows
 		return false;
 	}
 
-	void BasicKeyboardInputManager::KeyReact(char key)
+	void BasicKeyboardInputManager::KeyReact(wchar_t key)
 	{
 		switch (key)
 		{
 		case MOVES::UP:
-		case MOVES::LEFT:
+		case MOVES::RIGHT:
 			refToCurrentWindowPtr->SetExtraCommand(new SlideToNextChildWindowCommand(refToCurrentWindowPtr));
 			break;
 		case MOVES::DOWN:
-		case MOVES::RIGHT:
+		case MOVES::LEFT:
 			refToCurrentWindowPtr->SetExtraCommand(new SlideToPrevChildWindowCommand(refToCurrentWindowPtr));
 			break;
 		case MOVES::ENTER:

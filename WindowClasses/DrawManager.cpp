@@ -23,7 +23,10 @@ namespace myconsolewindows
 			{
 				win->Clean();
 				if (!win->IsDeleted())
+				{
 					win->Draw();
+					win->IsChanged(false);
+				}
 			}
 		}
 	}
