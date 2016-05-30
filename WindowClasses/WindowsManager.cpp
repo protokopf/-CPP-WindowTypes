@@ -4,7 +4,7 @@
 namespace myconsolewindows
 {
 #pragma region Конструкторы и деструкторы
-	WindowsManager::WindowsManager(BasicWindow* window)
+	WindowsManager::WindowsManager(BasicWindow* window, vector<BasicWindow*>& refToVector) : refToAllWindows(refToVector)
 	{
 		AddWindow(window);
 	}
@@ -27,7 +27,10 @@ namespace myconsolewindows
 	{
 		int startIndex = path.size();
 		path.append(wstring(L".") + window->GetName());
+
 		mWindows.insert({ path, window });
+		refToAllWindows.push_back(window);
+
 		for (auto child : (*window->GetChilds()))
 			RecursiveAdding(child, path);
 		path.erase(path.begin() + startIndex, path.begin() + window->GetName().size() + 1);
@@ -36,7 +39,8 @@ namespace myconsolewindows
 	{
 		wstring path = window->GetName();
 		mWindows.insert({ path, window });
-		for (auto child : (*window->GetChilds))
+		refToAllWindows.push_back(window);
+		for (auto child : (*window->GetChilds()))
 			RecursiveAdding(child, path);
 	}
 #pragma endregion

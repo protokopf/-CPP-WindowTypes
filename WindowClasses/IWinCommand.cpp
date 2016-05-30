@@ -1,5 +1,6 @@
 #include "IWinCommand.h"
 #include "BasicWindow.h"
+#include "ViewLayer.h"
 #include <algorithm>
 
 namespace myconsolewindows
@@ -59,5 +60,23 @@ namespace myconsolewindows
 			}
 		}
 	}
+#pragma endregion
+
+#pragma region LayerMethodWindowCommand
+	using lmwc = LayerMethodWindowCommand;
+
+	lmwc::LayerMethodWindowCommand(BasicWindow*& window, ViewLayer* lpLayer, lmwc::ViewLayerMethod lpMethod):
+		WindowCommand(window)
+	{
+		ptrToLayer = lpLayer;
+		ptrToMethod = lpMethod;
+	}
+
+	void lmwc::Execute()
+	{
+		if (ptrToLayer && ptrToMethod)
+			(ptrToLayer->*ptrToMethod)();
+	}
+
 #pragma endregion
 }

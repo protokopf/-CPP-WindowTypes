@@ -12,6 +12,7 @@
 
 #include <conio.h>
 #include <iostream>
+#include <vector>
 
 
 namespace myconsolewindows
@@ -22,6 +23,7 @@ namespace myconsolewindows
 		HANDLE       mConsoleHandle;
 
 		BasicWindow* mActiveWindow;
+		vector<BasicWindow*> allWindows;
 
 		InputManagerInterface* mInputManager = nullptr;
 		DrawManagerInterface* mDrawManager = nullptr;
@@ -31,10 +33,17 @@ namespace myconsolewindows
 
 		void SetUpConsole();
 		void SetUpCreator();
+
+		void HelloWorld() { cout << "HelloWorld!\n"; }
 	public:
 		ViewLayer();
 
 		void MainLoop();
+		void TestMethod()
+		{
+			WindowCommand *command = new LayerMethodWindowCommand(mActiveWindow, this, &ViewLayer::HelloWorld);
+			command->Execute();
+		}
 
 		~ViewLayer();
 	};

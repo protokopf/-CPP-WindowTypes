@@ -4,6 +4,7 @@
 namespace myconsolewindows
 {
 	extern class BasicWindow;
+	extern class ViewLayer;
 
 	class WindowCommand
 	{
@@ -46,6 +47,19 @@ namespace myconsolewindows
 	{
 	public:
 		GoToPrevChildWindowCommand(BasicWindow *& goalWindow) : WindowCommand(goalWindow) {}
+
+		void Execute() override;
+	};
+
+	class LayerMethodWindowCommand : public WindowCommand
+	{
+	public:
+		typedef void(ViewLayer::*ViewLayerMethod)(void);
+	private:
+		ViewLayer* ptrToLayer = nullptr;
+		ViewLayerMethod ptrToMethod = nullptr;
+	public:
+		LayerMethodWindowCommand(BasicWindow*& window, ViewLayer* lpLayer, ViewLayerMethod lpLayerMethod);
 
 		void Execute() override;
 	};

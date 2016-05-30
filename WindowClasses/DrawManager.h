@@ -11,10 +11,12 @@ namespace myconsolewindows
 	class DrawManagerInterface
 	{
 	protected:
-		vector<BasicWindow*> mWindows;
+		vector<BasicWindow*>& refToAllWindows;
 	public:
-		void RecursiveAdding(BasicWindow* root);
+		DrawManagerInterface(BasicWindow* root, vector<BasicWindow*>& refToVector) : refToAllWindows(refToVector)
+		{
 
+		}
 		virtual void InitDraw() = 0;
 		virtual void DrawWindows() = 0;
 	};
@@ -22,9 +24,8 @@ namespace myconsolewindows
 	class WindowDrawManager : public DrawManagerInterface
 	{
 	public:
-		WindowDrawManager(BasicWindow *window) 
+		WindowDrawManager(BasicWindow *window, vector<BasicWindow*>& refToVector) : DrawManagerInterface(window,refToVector)
 		{
-			RecursiveAdding(window);
 		}
 
 		void InitDraw() override;

@@ -3,6 +3,7 @@
 
 #include <string>
 #include <map>
+#include <vector>
 using namespace std;
 
 namespace myconsolewindows
@@ -21,9 +22,10 @@ namespace myconsolewindows
 	{
 	private:
 		map<wstring, BasicWindow*> mWindows;
+		vector<BasicWindow*>& refToAllWindows;
 		void RecursiveAdding(BasicWindow *window, wstring &path);
 	public:
-		WindowsManager(BasicWindow* window);
+		WindowsManager(BasicWindow* window, vector<BasicWindow*>& refToVector);
 		void AddWindow(BasicWindow *window);
 		BasicWindow* operator[](wstring windowPath);
 	};

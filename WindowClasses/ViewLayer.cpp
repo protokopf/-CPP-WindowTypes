@@ -10,10 +10,11 @@ namespace myconsolewindows
 
 		// создание окон
 
-		mWindowsManager = new WindowsManager(mActiveWindow);
+		mWindowsManager = new WindowsManager(mActiveWindow,allWindows);
+		mDrawManager = new WindowDrawManager(mActiveWindow, allWindows);
+
 		mInputManager = new BasicKeyboardInputManager(mActiveWindow);
 		mCommandManager = new CommandManager(mActiveWindow);
-		mDrawManager = new WindowDrawManager(mActiveWindow);
 	}
 
 	void ViewLayer::SetUpConsole()
