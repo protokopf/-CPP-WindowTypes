@@ -39,6 +39,7 @@ namespace myconsolewindows
 		HWND hwndConsole;
 		RECT rectConsole;
 		POINT posCursor;
+		COORD fontSize;
 
 		void CutWindowRect();
 		bool IntersectConsoleRect();
@@ -46,6 +47,7 @@ namespace myconsolewindows
 		MouseKeyboardInputManager(BasicWindow*& refToWin) : BasicKeyboardInputManager(refToWin)
 		{
 			hwndConsole = GetConsoleWindow();
+			fontSize = GetConsoleFontSize(hwndConsole, 0);
 		}
 
 		bool Check() override;

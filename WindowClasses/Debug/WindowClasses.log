@@ -1,18 +1,13 @@
-﻿Build started 30.05.2016 18:44:03.
+﻿Build started 30.05.2016 19:23:41.
      1>Project "E:\Программирование\С++\Библиотека окон\WinClasses\WindowClasses\WindowClasses.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt IWinCommand.cpp
-         IWinCommand.cpp
+         C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt InputManager.cpp
+         InputManager.cpp
+     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\inputmanager.h(10): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
+     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\idrawablealgorithms.h(11): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
      1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\iwincommand.h(6): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
      1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\iwincommand.h(7): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::ViewLayer' when no variable is declared
-     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\idrawablealgorithms.h(11): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
-     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\inputmanager.h(5): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
-     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\drawmanager.h(9): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
-     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\windowcreatormanager.h(14): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
-     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\commandmanager.h(10): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
-     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\windowsmanager.h(11): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
-     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\windowcreationfunctions.h(7): warning C4091: 'extern ' : ignored on left of 'myconsolewindows::BasicWindow' when no variable is declared
-     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\iwincommand.cpp(50): warning C4018: '<' : signed/unsigned mismatch
+     1>e:\программирование\с++\библиотека окон\winclasses\windowclasses\inputmanager.cpp(89): warning C4390: ';' : empty controlled statement found; is this the intent?
        Link:
          C:\Program Files\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Программирование\С++\Библиотека окон\WinClasses\Debug\WindowClasses.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\Программирование\С++\Библиотека окон\WinClasses\Debug\WindowClasses.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Программирование\С++\Библиотека окон\WinClasses\Debug\WindowClasses.lib" /MACHINE:X86 Debug\BasicWindow.obj
          Debug\CommandManager.obj
@@ -31,4 +26,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:08.47
+Time Elapsed 00:00:06.90

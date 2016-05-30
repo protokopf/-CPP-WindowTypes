@@ -16,7 +16,8 @@ namespace myconsolewindows
 		mDrawManager = new WindowDrawManager(mAllWindows);
 		mCommandManager = new CommandManager(mAllWindows);
 
-		mInputManager = new BasicKeyboardInputManager(mActiveWindow);
+		//mInputManager = new BasicKeyboardInputManager(mActiveWindow);
+		mInputManager = new MouseKeyboardInputManager(mActiveWindow);
 		
 	}
 
