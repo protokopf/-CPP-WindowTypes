@@ -35,6 +35,8 @@ namespace myconsolewindows
 		ViewLayer();
 
 		void MainLoop();
+
+		~ViewLayer();
 	};
 }
 #endif

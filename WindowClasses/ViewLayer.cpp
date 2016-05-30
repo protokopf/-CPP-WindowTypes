@@ -40,4 +40,13 @@ namespace myconsolewindows
 			mDrawManager->DrawWindows();
 		}
 	}
+
+	ViewLayer::~ViewLayer()
+	{
+		delete mCreatorManager;
+		delete mWindowsManager;
+		delete mInputManager;
+		delete mCommandManager;
+		delete mDrawManager;
+	}
 }

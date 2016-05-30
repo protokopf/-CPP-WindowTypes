@@ -17,6 +17,14 @@ namespace myconsolewindows
 	{
 		DeleteChilds();
 		delete mChilds;
+
+		delete mDrawAlgorithm;
+		delete mCleanAlgorithm;
+
+		delete mInnerCommand;
+		for (auto command : mExtraCommands)
+			delete command;
+		mExtraCommands.clear();
 	}
 #pragma endregion
 

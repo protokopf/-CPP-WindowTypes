@@ -30,7 +30,6 @@ namespace myconsolewindows
 	};
 	class BorderDrawAlgorithm : IDrawAlgorithm
 	{
-	private:
 	public:
 		void Draw(BasicWindow *window) override;
 
@@ -49,6 +48,10 @@ namespace myconsolewindows
 		void Draw(BasicWindow *window)
 		{
 			component->Draw(window);
+		}
+		~ADrawDecorator()
+		{
+			delete component;
 		}
 	};
 	class FillSquareDrawDecorator : ADrawDecorator
