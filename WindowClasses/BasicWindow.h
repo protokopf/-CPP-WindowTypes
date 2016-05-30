@@ -83,6 +83,8 @@ namespace myconsolewindows
 		bool IsDeleted() const { return mIsDeleted; }
 		void IsDeleted(bool value) { mIsDeleted = value; mIsChanged = value; }
 
+		bool IsInFocus() { return backColor == markedColor; }
+
 		COORD GetPosition() const { return mPosition; }
 		COORD GetSize() const { return mSize; }
 

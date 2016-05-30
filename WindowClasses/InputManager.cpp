@@ -8,15 +8,15 @@ using namespace std;
 
 namespace myconsolewindows
 {
-	#pragma region InputManagerInterface
-	InputManagerInterface::InputManagerInterface(BasicWindow*& refToCurWinPtr) : 
+#pragma region InputManagerInterface
+	InputManagerInterface::InputManagerInterface(BasicWindow*& refToCurWinPtr) :
 		refToCurrentWindowPtr(refToCurWinPtr)
 	{
 
 	}
 #pragma endregion
 
-	#pragma region BasicKeyboardInputManager
+#pragma region BasicKeyboardInputManager
 
 	bool BasicKeyboardInputManager::Check()
 	{
@@ -54,15 +54,12 @@ namespace myconsolewindows
 
 #pragma region MouseKeyboardInputManager
 	using mkim = MouseKeyboardInputManager;
-	
+
 	bool mkim::Check()
 	{
 		if (mMouse.IsCursorInConsole())
-		{
-			// может, следует убрать возврат из функции, чтобы моно было еще обрабатывать нажатия клавиш
 			if (CheckIntersectionWithWindows(mMouse.GetCursorPositionInSymbols()))
 				return true;
-		}
 		if (_kbhit() && (KeyReact(_getch())));
 			return true;
 		return false;
@@ -78,12 +75,15 @@ namespace myconsolewindows
 	bool mkim::CheckIntersectionWithWindows(POINT point)
 	{
 		auto childs = refToCurrentWindowPtr->GetChilds();
-		for (int i = 0; i < childs->size(); ++i)
+		if (childs)
 		{
-			if (!(*childs)[i]->IsHidden() && (*childs)[i]->IsInteractable() && IsWindowContainPoint((*childs)[i], point))
+			for (int i = 0; i < childs->size(); ++i)
 			{
-				refToCurrentWindowPtr->SetExtraCommand(new SlideToConcreteChildWindowCommand(refToCurrentWindowPtr, i));
-				return true;
+				if (!(*childs)[i]->IsHidden() && (*childs)[i]->IsInteractable() && IsWindowContainPoint((*childs)[i], point))
+				{
+					refToCurrentWindowPtr->SetExtraCommand(new SlideToConcreteChildWindowCommand(refToCurrentWindowPtr, i));
+					return true;
+				}
 			}
 		}
 		return false;

@@ -18,7 +18,6 @@ namespace myconsolewindows
 
 		//mInputManager = new BasicKeyboardInputManager(mActiveWindow);
 		mInputManager = new MouseKeyboardInputManager(mActiveWindow);
-		
 	}
 
 	void ViewLayer::SetUpConsole()

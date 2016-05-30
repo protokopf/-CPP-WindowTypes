@@ -90,11 +90,11 @@ namespace myconsolewindows
 		(*childs)[currentIndex]->OutFocus();
 		(*childs)[concreteIndex]->InFocus();
 		commandedWindow->SetCurrentChildIndex(concreteIndex);
-
 	}
 #pragma endregion
 
-	#pragma region LayerMethodWindowCommand
+
+#pragma region LayerMethodWindowCommand
 	using lmwc = LayerMethodWindowCommand;
 
 	lmwc::LayerMethodWindowCommand(BasicWindow*& window, ViewLayer* lpLayer, lmwc::ViewLayerMethod lpMethod):
