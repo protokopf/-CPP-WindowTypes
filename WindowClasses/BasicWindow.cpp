@@ -35,7 +35,7 @@ namespace myconsolewindows
 
 #pragma region Геттеры и Сеттеры
 
-	int		BasicWindow::GetCurrentChildIndex()
+	int		BasicWindow::GetCurrentChildIndex() const 
 	{
 		return mCurrentChildIndex;
 	}
@@ -53,7 +53,7 @@ namespace myconsolewindows
 		mParent = parent;
 	}
 
-	wstring BasicWindow::GetName()
+	wstring BasicWindow::GetName() const
 	{
 		return mName;
 	}
@@ -104,12 +104,12 @@ namespace myconsolewindows
 			delete (*it);
 	}
 
-	void BasicWindow::Draw()
+	void BasicWindow::Draw() const
 	{
 		if (mDrawAlgorithm)
 			mDrawAlgorithm->Draw(this);
 	}
-	void BasicWindow::Clean()
+	void BasicWindow::Clean() const
 	{
 		if (mCleanAlgorithm)
 			mCleanAlgorithm->Clean(this);

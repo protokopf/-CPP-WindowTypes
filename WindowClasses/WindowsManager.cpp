@@ -4,7 +4,7 @@
 namespace myconsolewindows
 {
 #pragma region Конструкторы и деструкторы
-	WindowsManager::WindowsManager(BasicWindow* window, vector<BasicWindow*>& refToVector) : refToAllWindows(refToVector)
+	WindowsManager::WindowsManager(BasicWindow* window, vector<BasicWindow*>* refToVector) : refToAllWindows(refToVector)
 	{
 		AddWindow(window);
 	}
@@ -29,7 +29,7 @@ namespace myconsolewindows
 		path.append(wstring(L".") + window->GetName());
 
 		mWindows.insert({ path, window });
-		refToAllWindows.push_back(window);
+		refToAllWindows->push_back(window);
 		if (window->GetChilds())
 			for (auto child : (*window->GetChilds()))
 				RecursiveAdding(child, path);
@@ -39,7 +39,7 @@ namespace myconsolewindows
 	{
 		wstring path = window->GetName();
 		mWindows.insert({ path, window });
-		refToAllWindows.push_back(window);
+		refToAllWindows->push_back(window);
 		if (window->GetChilds())
 			for (auto child : (*window->GetChilds()))
 				RecursiveAdding(child, path);

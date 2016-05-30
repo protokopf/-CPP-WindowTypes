@@ -56,37 +56,37 @@ namespace myconsolewindows
 		void OutFocus();
 
 		virtual void AddChildWindow(BasicWindow* child);
-		virtual void Draw();
-		virtual void Clean();
+		virtual void Draw() const;
+		virtual void Clean() const;
 
-		int GetCurrentChildIndex();
+		int GetCurrentChildIndex() const;
 		void SetCurrentChildIndex(int index);
 
 		BasicWindow* GetParent();
 		void SetParent(BasicWindow* parent);
 
-		wstring GetName();
+		wstring GetName() const;
 		void   SetName(const wstring &name);
 
-		bool IsClicked() { return mIsClicked; }
+		bool IsClicked() const { return mIsClicked; }
 		void IsClicked(bool clicked) { mIsClicked = clicked; }
 
-		bool IsChanged() { return mIsChanged; }
+		bool IsChanged() const { return mIsChanged; }
 		void IsChanged(bool value) { mIsChanged = value; }
 
-		bool IsInteractable() { return mIsInteractable; }
+		bool IsInteractable() const { return mIsInteractable; }
 		void IsInteractable(bool value) { mIsInteractable = value; }
 
-		bool IsHidden() { return mIsHidden; }
+		bool IsHidden() const { return mIsHidden; }
 		void IsHidden(bool value) { mIsHidden = value; }
 
-		bool IsDeleted() { return mIsDeleted; }
+		bool IsDeleted() const { return mIsDeleted; }
 		void IsDeleted(bool value) { mIsDeleted = value; mIsChanged = value; }
 
-		COORD GetPosition() { return mPosition; }
-		COORD GetSize() { return mSize; }
+		COORD GetPosition() const { return mPosition; }
+		COORD GetSize() const { return mSize; }
 
-		HANDLE GetConsoleHandle() { return hConsole; }
+		HANDLE GetConsoleHandle() const { return hConsole; }
 		void SetColor  (COLORS font, COLORS back)
 		{
 			SetConsoleTextAttribute(hConsole, (WORD)((back << 4) | font));
@@ -94,8 +94,8 @@ namespace myconsolewindows
 			backColor = back;
 		}
 
-		COLORS GetBack() { return backColor; }
-		COLORS GetFont() { return fontColor; }
+		COLORS GetBack() const { return backColor; }
+		COLORS GetFont() const { return fontColor; }
 
 		vector<BasicWindow*>* GetChilds() { return mChilds; }
 

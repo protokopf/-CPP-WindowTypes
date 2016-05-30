@@ -11,13 +11,13 @@ namespace myconsolewindows
 
 	void WindowDrawManager::InitDraw()
 	{
-		for (auto win : refToAllWindows)
+		for (auto win : (*refToAllWindows))
 			if (!win->IsHidden())
 				win->Draw();
 	}
 	void WindowDrawManager::DrawWindows()
 	{
-		for (auto win : refToAllWindows)
+		for (auto win : (*refToAllWindows))
 		{
 			if (!win->IsHidden() && win->IsChanged())
 			{

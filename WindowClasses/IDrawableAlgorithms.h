@@ -19,7 +19,7 @@ namespace myconsolewindows
 		int maxX;
 		HANDLE handle;
 		WORD   color;
-		void ExtractValuesFromWindow(BasicWindow *window);
+		void ExtractValuesFromWindow(const BasicWindow *window);
 	public:
 		virtual ~ViewAlgorithm() {}
 	};
@@ -27,13 +27,13 @@ namespace myconsolewindows
 	class IDrawAlgorithm : public ViewAlgorithm
 	{
 	public:
-		virtual void Draw(BasicWindow *window) = 0;
+		virtual void Draw(const BasicWindow *window) = 0;
 		virtual ~IDrawAlgorithm() {}
 	};
 	class BorderDrawAlgorithm : public IDrawAlgorithm
 	{
 	public:
-		void Draw(BasicWindow *window) override;
+		void Draw(const BasicWindow *window)override;
 		virtual ~BorderDrawAlgorithm(){}
 	};
 
@@ -46,7 +46,7 @@ namespace myconsolewindows
 		{
 
 		}
-		void Draw(BasicWindow *window)
+		void Draw(const BasicWindow *window)
 		{
 			component->Draw(window);
 		}
@@ -58,7 +58,7 @@ namespace myconsolewindows
 	class FillSquareDrawDecorator : public ADrawDecorator
 	{
 	private:
-		void FillWindowSquare(BasicWindow *window);
+		void FillWindowSquare(const BasicWindow *window);
 		wchar_t mFilledSymbol;
 	public:
 		FillSquareDrawDecorator(wchar_t fillingSymbol, IDrawAlgorithm *algorithm) : ADrawDecorator(algorithm)
@@ -66,7 +66,7 @@ namespace myconsolewindows
 			mFilledSymbol = fillingSymbol;
 		}
 
-		void Draw(BasicWindow* window)
+		void Draw(const BasicWindow* window)
 		{
 			ADrawDecorator::Draw(window);
 			FillWindowSquare(window);
@@ -77,13 +77,13 @@ namespace myconsolewindows
 	class ICleanAlgorithm : public ViewAlgorithm
 	{
 	public:
-		virtual void Clean(BasicWindow *window) = 0;
+		virtual void Clean(const BasicWindow *window) = 0;
 		virtual ~ICleanAlgorithm(){}
 	};
 	class BorderCleanAlgorithm : public ICleanAlgorithm
 	{
 	public:
-		void Clean(BasicWindow *window) override;
+		void Clean(const BasicWindow *window) override;
 	};
 }
 #endif

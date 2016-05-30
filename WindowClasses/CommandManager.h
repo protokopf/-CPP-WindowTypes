@@ -11,9 +11,9 @@ namespace myconsolewindows
 	class CommandManagerInterface
 	{
 	protected:
-		vector<BasicWindow*>& refToAllWindows;
+		vector<BasicWindow*>* refToAllWindows;
 	public:
-		CommandManagerInterface(vector<BasicWindow*>& refToVector) : refToAllWindows(refToVector) {}
+		CommandManagerInterface(vector<BasicWindow*>* refToVector) : refToAllWindows(refToVector) {}
 
 		virtual void ExecuteCommands() = 0;
 		virtual ~CommandManagerInterface() {}
@@ -22,7 +22,7 @@ namespace myconsolewindows
 	class CommandManager : public CommandManagerInterface
 	{
 	public:
-		CommandManager(vector<BasicWindow*>& refToVector);
+		CommandManager(vector<BasicWindow*>* refToVector);
 
 		void ExecuteCommands() override;
 	};

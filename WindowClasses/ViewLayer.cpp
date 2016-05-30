@@ -5,15 +5,16 @@ namespace myconsolewindows
 {
 	ViewLayer::ViewLayer()
 	{
+		mAllWindows = new vector<BasicWindow*>();
 		mCreatorManager = new WindowCreatorManager();
 
 		SetUpConsole();
 		SetUpCreator();
 		SetUpWindows();
 
-		mWindowsManager = new WindowsManager(mActiveWindow,allWindows);
-		mDrawManager = new WindowDrawManager(allWindows);
-		mCommandManager = new CommandManager(allWindows);
+		mWindowsManager = new WindowsManager(mActiveWindow, mAllWindows);
+		mDrawManager = new WindowDrawManager(mAllWindows);
+		mCommandManager = new CommandManager(mAllWindows);
 
 		mInputManager = new BasicKeyboardInputManager(mActiveWindow);
 		
@@ -37,17 +38,8 @@ namespace myconsolewindows
 		BasicWindow* mainWindow = mCreatorManager->CreateMyWindow(L"PluralWindow", mActiveWindow, L"MainWindow", 0, 0, 79, 24, mConsoleHandle);
 		mainWindow->AddChildWindow(mCreatorManager->CreateMyWindow(L"PluralWindow", mActiveWindow, L"Child1", 12, 12, 10, 10, mConsoleHandle));
 		mActiveWindow = mainWindow;
-
-		RecursiveAddingWindows(mActiveWindow);
 	}
 
-	void ViewLayer::RecursiveAddingWindows(BasicWindow* root)
-	{
-		allWindows.push_back(root);
-		if (root->GetChilds())
-			for (auto child : (*root->GetChilds()))
-				RecursiveAddingWindows(child);
-	}
 
 	void ViewLayer::MainLoop()
 	{

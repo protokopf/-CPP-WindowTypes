@@ -11,9 +11,9 @@ namespace myconsolewindows
 	class DrawManagerInterface
 	{
 	protected:
-		vector<BasicWindow*>& refToAllWindows;
+		const vector<BasicWindow*>* refToAllWindows;
 	public:
-		DrawManagerInterface(vector<BasicWindow*>& refToVector) : refToAllWindows(refToVector)
+		DrawManagerInterface(const vector<BasicWindow*>* refToVector) : refToAllWindows(refToVector)
 		{
 
 		}
@@ -24,7 +24,7 @@ namespace myconsolewindows
 	class WindowDrawManager : public DrawManagerInterface
 	{
 	public:
-		WindowDrawManager(vector<BasicWindow*>& refToVector) : DrawManagerInterface(refToVector)
+		WindowDrawManager(const vector<BasicWindow*>* refToVector) : DrawManagerInterface(refToVector)
 		{
 		}
 

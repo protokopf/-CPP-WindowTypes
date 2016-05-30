@@ -6,7 +6,7 @@ namespace myconsolewindows
 {
 #pragma region ViewAlgorithm
 
-	void ViewAlgorithm::ExtractValuesFromWindow(BasicWindow *window)
+	void ViewAlgorithm::ExtractValuesFromWindow(const BasicWindow *window)
 	{
 		winPos = window->GetPosition();
 		winSize = window->GetSize();
@@ -19,7 +19,7 @@ namespace myconsolewindows
 #pragma endregion
 
 #pragma region BorderDrawAlgoruthm
-	void BorderDrawAlgorithm::Draw(BasicWindow *wind)
+	void BorderDrawAlgorithm::Draw(const BasicWindow *wind)
 	{
 		ExtractValuesFromWindow(wind);
 		LPDWORD length = new DWORD;
@@ -54,7 +54,7 @@ namespace myconsolewindows
 
 #pragma region FillSquareDrawDecorator
 
-	void FillSquareDrawDecorator::FillWindowSquare(BasicWindow *wind)
+	void FillSquareDrawDecorator::FillWindowSquare(const BasicWindow *wind)
 	{
 		ExtractValuesFromWindow(wind);
 		LPDWORD length = new DWORD;
@@ -70,7 +70,7 @@ namespace myconsolewindows
 
 #pragma region BorderCleanAlgorithm
 
-	void BorderCleanAlgorithm::Clean(BasicWindow *window)
+	void BorderCleanAlgorithm::Clean(const BasicWindow *window)
 	{
 		ExtractValuesFromWindow(window);
 		LPDWORD length = new DWORD;
